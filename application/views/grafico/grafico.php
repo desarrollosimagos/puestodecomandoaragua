@@ -90,9 +90,11 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                           <div role="tabpanel" class="tab-pane fade in active" id="operadores">
-                              <div id="container-operador" style="min-width: 310px; height: 400px; max-width: 600px; margin: 3% auto"></div>
+                              <div id="container-operador" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
                           </div>
-                          <div role="tabpanel" class="tab-pane fade" id="institucion">bbb</div>
+                          <div role="tabpanel" class="tab-pane fade" id="institucion">
+                              <div id="container-institucion" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
+                          </div>
                           <div role="tabpanel" class="tab-pane fade" id="ins_sit">ccc</div>
                         </div>
                     </div>
@@ -103,55 +105,4 @@
 
 
  <!-- Page-Level Scripts -->
-<script type="text/javascript">
-    // Build the chart
-    Highcharts.chart('container-operador', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Browser market shares January, 2015 to May, 2015'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'Microsoft Internet Explorer',
-                y: 56.33
-            }, {
-                name: 'Chrome',
-                y: 24.03,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Firefox',
-                y: 10.38
-            }, {
-                name: 'Safari',
-                y: 4.77
-            }, {
-                name: 'Opera',
-                y: 0.91
-            }, {
-                name: 'Proprietary or Undetectable',
-                y: 0.2
-            }]
-        }]
-    });
-</script>
+<script src="<?php echo assets_url('js/components/grafico.js');?>"></script>
