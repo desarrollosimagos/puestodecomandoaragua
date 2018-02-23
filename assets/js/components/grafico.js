@@ -136,11 +136,12 @@ $(document).ready(function () {
         $.each(datos, function( index, value ){
             var count_y     = value.y;
             var name_string = value.name;
+            var name_string = name_string.split(" ");
 
             value  = '<div class="col-lg-3">';
             value += '<div class="ibox float-e-margins">';
             value += '<div class="ibox-title">';
-            value += '<h5 style="font-size:10px;">'+name_string+'</h5>';
+            value += '<h5 style="font-size:12px;">'+name_string[0]+'</h5>';
             value += '</div>';
             value += '<div class="ibox-content">';
             value += '<h1 class="no-margins font-bold text-navy">'+count_y+'</h1>';
