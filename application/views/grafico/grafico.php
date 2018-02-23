@@ -102,12 +102,41 @@
                             <a class="nav-link" href="#ins_sit" role="tab" data-toggle="tab">Institución / situacion</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#mensiones" role="tab" data-toggle="tab">Estadisticas por Menciones</a>
+                            <a class="nav-link" href="#mensiones" role="tab" data-toggle="tab">Mención al Ciudadano Gobernador</a>
                           </li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
+                              <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label class="col-sm-1 control-label" >Mes</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control" id="mes" name="mes">
+                                                <option value="01">Enero</option>
+                                                <option value="02">Febrero</option>
+                                                <option value="03">Marzo</option>
+                                                <option value="04">Abril</option>
+                                                <option value="05">Mayo</option>
+                                                <option value="06">Junio</option>
+                                                <option value="07">Julio</option>
+                                                <option value="08">Agosto</option>
+                                                <option value="09">Septiembre</option>
+                                                <option value="10">Octubre</option>
+                                                <option value="11">Noviembre</option>
+                                                <option value="12">Diciembre</option>
+                                            </select>
+                                        </div>
+                                        <label class="col-sm-1 control-label" >Desde</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control datepicker numeric" type="text" id="desde" name="desde">
+                                        </div>
+                                        <label class="col-sm-1 control-label" >Hasta</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control datepicker numeric" type="text" id="hasta" name="hasta">
+                                        </div>
+                                    </div>
+                                </div><br>
                           <div role="tabpanel" class="tab-pane fade in active" id="operadores">
                               <div class="wrapper wrapper-content">
                                 <div class="row">

@@ -176,6 +176,7 @@ $route['social_profile/associate'] = 'CPerfilSocial/associate';
 $route['supervision'] = 'CGrafico';
 $route['operador_json'] = 'CGrafico/grafico_operador';
 $route['institucion_json'] = 'CGrafico/grafico_institucion';
+$route['mencion_json'] = 'CGrafico/grafico_mencion';
 
 
 /*   Migraciones */

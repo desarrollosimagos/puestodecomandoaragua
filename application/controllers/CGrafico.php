@@ -47,5 +47,13 @@ class CGrafico extends CI_Controller {
         echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
 
+	// Estadisticas de Twitter por Mencion al Ciudadano Gobernador
+	public function grafico_mencion()
+	{	
+		exit;
+        $response = $this->grafico->grafico_mencion();
+        echo json_encode($response);
+	}
+
 
 }

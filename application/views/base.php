@@ -233,6 +233,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					// Aplicamos select2() a todos los combos select
 					$("select").select2();
 					
+					$('.datepicker').datepicker({
+				        format: "dd/mm/yyyy",
+				        language: "es",
+				        autoclose: true,
+				    });
+					
 					// Función añadida manualmente para alternar entre mini-barra y barra de menú completa u ocultar en dispositivos móviles
 					// .navbar-minimalize = clase del botón de acción
 					// .md-skin = clase de la etiqueta body asignada automáticamente por los plugins de la plantilla

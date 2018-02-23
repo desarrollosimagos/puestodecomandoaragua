@@ -36,5 +36,16 @@ class MGrafico extends CI_Model {
         return $query->result();
     }
 
+    // Estadisticas de Twitter por Mencion al Ciudadano Gobernador
+    public function grafico_mencion()
+    {
+        $this->db->select("a.screen_name AS nombre, count(a.id) AS cantidad");
+        $this->db->from("bandeja_respuestas as a");
+        $this->db->like('a.text', '@RMarcoTorres');
+        $this->db->group_by('a.screen_name');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
 }
 ?>
