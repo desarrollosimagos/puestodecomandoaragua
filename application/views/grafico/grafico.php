@@ -1,5 +1,21 @@
 <style type="text/css">
 
+    .ibox-title {
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        background-color: #aae4ae;
+        border-color: #e7eaec;
+        border-image: none;
+        border-style: solid solid none;
+        border-width: 2px 0 0;
+        color: #000000;
+        margin-bottom: 0;
+        padding: 15px 15px 7px;
+        min-height: 48px;
+    }
+
     $padding-base: 15px;
     $color-body: #fff;
     $color-border: #ddd;
@@ -85,17 +101,31 @@
                           <li class="nav-item">
                             <a class="nav-link" href="#ins_sit" role="tab" data-toggle="tab">Institución / situacion</a>
                           </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#mensiones" role="tab" data-toggle="tab">Estadisticas por Menciones</a>
+                          </li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                           <div role="tabpanel" class="tab-pane fade in active" id="operadores">
+
+                              <div class="wrapper wrapper-content">
+                                <div class="row">
+                                    <div id='container-operador-count'></div>
+                                </div>
+                              </div>
                               <div id="container-operador" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
                           </div>
                           <div role="tabpanel" class="tab-pane fade" id="institucion">
                               <div id="container-institucion" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
                           </div>
-                          <div role="tabpanel" class="tab-pane fade" id="ins_sit">ccc</div>
+                          <div role="tabpanel" class="tab-pane fade" id="ins_sit">
+                              dddd
+                          </div>
+                          <div role="tabpanel" class="tab-pane fade" id="mensiones">
+                              <div id="container-mensiones" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
+                          </div>
                         </div>
                     </div>
                 </div>
