@@ -132,6 +132,25 @@ $(document).ready(function () {
     $.get(base_url('/institucion_json'), function(data, status){
             
         var datos = $.parseJSON(data);
+
+        $.each(datos, function( index, value ){
+            var count_y     = value.y;
+            var name_string = value.name;
+
+            value  = '<div class="col-lg-3">';
+            value += '<div class="ibox float-e-margins">';
+            value += '<div class="ibox-title">';
+            value += '<h5 style="font-size:10px;">'+name_string+'</h5>';
+            value += '</div>';
+            value += '<div class="ibox-content">';
+            value += '<h1 class="no-margins font-bold text-navy">'+count_y+'</h1>';
+            //value += '<div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>';
+            //value += '<small>Porcentaje</small>';
+            value += '</div>';
+            value += '</div>';
+            value += '</div>';
+            $('div#container-institucion-count').append(value);
+        });
         
         $('#container-institucion').highcharts({
             chart: {

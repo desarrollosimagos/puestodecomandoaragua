@@ -109,7 +109,6 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                           <div role="tabpanel" class="tab-pane fade in active" id="operadores">
-
                               <div class="wrapper wrapper-content">
                                 <div class="row">
                                     <div id='container-operador-count'></div>
@@ -118,6 +117,11 @@
                               <div id="container-operador" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
                           </div>
                           <div role="tabpanel" class="tab-pane fade" id="institucion">
+                              <div class="wrapper wrapper-content">
+                                <div class="row">
+                                    <div id='container-institucion-count'></div>
+                                </div>
+                              </div>
                               <div id="container-institucion" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
                           </div>
                           <div role="tabpanel" class="tab-pane fade" id="ins_sit">
