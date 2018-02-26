@@ -22,7 +22,7 @@ class CGrafico extends CI_Controller {
         parent::__construct();
         
 		// Load database
-        //~ $this->load->model('MFranchises');
+        $this->load->model('MGrafico','grafico');
     }
 	 
 	public function index()
@@ -31,6 +31,29 @@ class CGrafico extends CI_Controller {
 		$this->load->view('base');
 		$this->load->view('grafico/grafico');
 		$this->load->view('footer');
-
 	}
+
+	// Grafico operador
+	public function grafico_operador()
+	{
+        $response = $this->grafico->grafico_operador();
+        echo json_encode($response, JSON_NUMERIC_CHECK);
+	}
+
+	// Grafico institucion, cada insttitucion se le asigna una serie de twt y estos se encargan de gestionarlos
+	public function grafico_institucion()
+	{
+        $response = $this->grafico->grafico_institucion();
+        echo json_encode($response, JSON_NUMERIC_CHECK);
+	}
+
+	// Estadisticas de Twitter por Mencion al Ciudadano Gobernador
+	public function grafico_mencion()
+	{	
+		exit;
+        $response = $this->grafico->grafico_mencion();
+        echo json_encode($response);
+	}
+
+
 }
