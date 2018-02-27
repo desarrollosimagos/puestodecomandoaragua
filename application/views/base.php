@@ -60,6 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo assets_url('js/Highcharts/highcharts.js');?>"></script>
     <script src="<?php echo assets_url('js/Highcharts/highcharts-3d.js');?>"></script>
     <script src="<?php echo assets_url('js/Highcharts/exporting.js');?>"></script>
+    
 </head>
 <body class="md-skin fixed-nav no-skin-config">
 	<div id="wrapper">

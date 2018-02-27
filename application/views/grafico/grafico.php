@@ -79,92 +79,139 @@
 
     </div>
 </div>
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Gráfico</h5>
-            </div>
-            <div class="ibox-content">
-                <div class="table-responsive">
-                    <!-- Bootstrap CSS -->
-                    <!-- jQuery first, then Bootstrap JS. -->
-                    <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                          <li class="nav-item">
-                            <a class="nav-link active" href="#operadores" role="tab" data-toggle="tab">Operadores</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#institucion" role="tab" data-toggle="tab">Institución</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#ins_sit" role="tab" data-toggle="tab">Institución / situacion</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#mensiones" role="tab" data-toggle="tab">Mención al Ciudadano Gobernador</a>
-                          </li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                              <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <label class="col-sm-1 control-label" >Mes</label>
-                                        <div class="col-sm-3">
-                                            <select class="form-control" id="mes" name="mes">
-                                                <option value="01">Enero</option>
-                                                <option value="02">Febrero</option>
-                                                <option value="03">Marzo</option>
-                                                <option value="04">Abril</option>
-                                                <option value="05">Mayo</option>
-                                                <option value="06">Junio</option>
-                                                <option value="07">Julio</option>
-                                                <option value="08">Agosto</option>
-                                                <option value="09">Septiembre</option>
-                                                <option value="10">Octubre</option>
-                                                <option value="11">Noviembre</option>
-                                                <option value="12">Diciembre</option>
-                                            </select>
-                                        </div>
-                                        <label class="col-sm-1 control-label" >Desde</label>
-                                        <div class="col-sm-3">
-                                            <input class="form-control datepicker numeric" type="text" id="desde" name="desde">
-                                        </div>
-                                        <label class="col-sm-1 control-label" >Hasta</label>
-                                        <div class="col-sm-3">
-                                            <input class="form-control datepicker numeric" type="text" id="hasta" name="hasta">
-                                        </div>
-                                    </div>
-                                </div><br>
-                          <div role="tabpanel" class="tab-pane fade in active" id="operadores">
-                              <div class="wrapper wrapper-content">
-                                <div class="row">
-                                    <div id='container-operador-count'></div>
-                                </div>
-                              </div>
-                              <div id="container-operador" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
-                          </div>
-                          <div role="tabpanel" class="tab-pane fade" id="institucion">
-                              <div class="wrapper wrapper-content">
-                                <div class="row">
-                                    <div id='container-institucion-count'></div>
-                                </div>
-                              </div>
-                              <div id="container-institucion" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
-                          </div>
-                          <div role="tabpanel" class="tab-pane fade" id="ins_sit">
-                              dddd
-                          </div>
-                          <div role="tabpanel" class="tab-pane fade" id="mensiones">
-                              <div id="container-mensiones" style="min-width: 100%; height: 400px; max-width: 100%; margin: 3% auto"></div>
-                          </div>
+<div class="wrapper wrapper-content">
+        <div class="row">
+                    <div class="col-lg-3">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <!--<span class="label label-success pull-right">Monthly</span>-->
+                                <h5>Menciones</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins count-menciones">0</h1>
+                                <!--<div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>-->
+                                <small>Total menciones</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <!--<div class="col-lg-3">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                
+                                <h5>Etiquetas del Dia</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins count-menciones-etiqueta">0</h1>
+                                
+                                <small>Total etiquetas</small>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!--<div class="col-lg-3">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-primary pull-right">Today</span>
+                                <h5>visits</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">106,120</h1>
+                                <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                                <small>New visits</small>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!--<div class="col-lg-3">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-danger pull-right">Low value</span>
+                                <h5>User activity</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">80,600</h1>
+                                <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
+                                <small>In first month</small>
+                            </div>
+                        </div>
+                    </div>-->
         </div>
-    </div>
+        <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Operadores</h5>
+                                <!--<div class="pull-right">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-xs btn-white active">Today</button>
+                                        <button type="button" class="btn btn-xs btn-white">Monthly</button>
+                                        <button type="button" class="btn btn-xs btn-white">Annual</button>
+                                    </div>
+                                </div>-->
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                <div class="col-lg-9" style="height: 345px !important;">
+                                    <div class="flot-chart">
+                                        <div id="container-operador" style="min-width: 100%; height: 300px; max-width: 100%; margin: 0% auto"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="widget style1 yellow-bg">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <i class="fa fa-users fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <span> Operadores </span>
+                                                <h2 class="font-bold count-opr">0</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Instituciones</h5>
+                                <!--<div class="pull-right">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-xs btn-white active">Today</button>
+                                        <button type="button" class="btn btn-xs btn-white">Monthly</button>
+                                        <button type="button" class="btn btn-xs btn-white">Annual</button>
+                                    </div>
+                                </div>-->
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                <div class="col-lg-10" style="height: 400px !important;">
+                                    <div class="flot-chart">
+                                        <div id="container-institucion" style="min-width: 100%; height: 400px; max-width: 100%; margin: 0% auto"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="widget style1 blue-bg">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <i class="fa fa-building fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <span> Inst </span>
+                                                <h2 class="font-bold count-ins">0</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+</div>
 
 
  <!-- Page-Level Scripts -->

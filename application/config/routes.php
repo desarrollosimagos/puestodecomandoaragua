@@ -57,7 +57,7 @@ $route['login'] = 'CLogin/login/';
 $route['login_public'] = 'CLogin/login_public/';
 $route['logout'] = 'CLogin/logout/';
 $route['logout_public'] = 'CLogin/logout_public/';
-$route['home'] = 'Home/home/';
+//$route['home'] = 'Home/home/';
 $route['admin'] = 'Welcome/admin/';
 /* page public*/
 $route['public'] = 'welcome';
@@ -79,6 +79,13 @@ $route['profile_delete/(:num)'] = 'CPerfil/delete/$1';
 $route['users'] = 'CUser';
 $route['users_register'] = 'CUser/register';
 $route['users_edit/(:num)'] = 'CUser/edit/$1';
+
+/* Situacion */
+$route['situacion'] = 'CSituacion';
+$route['situacion_register'] = 'CSituacion/register';
+$route['situacion_edit/(:num)'] = 'CSituacion/edit/$1';
+$route['situacion_delete/(:num)'] = 'CSituacion/delete/$1';
+
 /*   Menús */
 $route['menus'] = 'CMenus';
 $route['menus/register'] = 'CMenus/register';
@@ -173,10 +180,11 @@ $route['social_profile/edit'] = 'CPerfilSocial/edit';
 $route['social_profile/associate'] = 'CPerfilSocial/associate';
 
 /*   Graficos  */
-$route['supervision'] = 'CGrafico';
+$route['home'] = 'CGrafico';
 $route['operador_json'] = 'CGrafico/grafico_operador';
 $route['institucion_json'] = 'CGrafico/grafico_institucion';
 $route['mencion_json'] = 'CGrafico/grafico_mencion';
+$route['mencion_etiqueta_json'] = 'CGrafico/grafico_mencion_etiqueta';
 
 
 /*   Migraciones */

@@ -36,22 +36,30 @@ class CGrafico extends CI_Controller {
 	// Grafico operador
 	public function grafico_operador()
 	{
-        $response = $this->grafico->grafico_operador();
+        $response['grafico']  = $this->grafico->grafico_operador();
+        $response['cantidad'] = $this->grafico->count_operador();
         echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
 
 	// Grafico institucion, cada insttitucion se le asigna una serie de twt y estos se encargan de gestionarlos
 	public function grafico_institucion()
 	{
-        $response = $this->grafico->grafico_institucion();
+        $response['grafico']  = $this->grafico->grafico_institucion();
+        $response['cantidad'] = $this->grafico->count_institucion();
         echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
 
-	// Estadisticas de Twitter por Mencion al Ciudadano Gobernador
+	// Estadisticas de Twitter por Mencion
 	public function grafico_mencion()
-	{	
-		exit;
+	{
         $response = $this->grafico->grafico_mencion();
+        echo json_encode($response);
+	}
+
+	// Estadisticas de Twitter por Mencion
+	public function grafico_mencion_etiqueta()
+	{
+        $response = $this->grafico->grafico_mencion_etiqueta();
         echo json_encode($response);
 	}
 

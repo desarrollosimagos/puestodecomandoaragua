@@ -24,6 +24,15 @@ class MGrafico extends CI_Model {
         return $query->result();
     }
 
+    // Cantidad de operadores
+    public function count_operador()
+    {
+        $this->db->select("count(a.id) AS cantidad");
+        $this->db->from("users as a");
+        $query = $this->db->get();
+        return $query->row();
+    }
+
     // Grafico institucion, cada insttitucion se le asigna una serie de twt y estos se encargan de gestionarlos
     public function grafico_institucion()
     {
@@ -36,13 +45,30 @@ class MGrafico extends CI_Model {
         return $query->result();
     }
 
+    // Cantidad de instituciones
+    public function count_institucion()
+    {
+        $this->db->select("count(a.id) AS cantidad");
+        $this->db->from("profile as a");
+        $query = $this->db->get();
+        return $query->row();
+    }
+
     // Estadisticas de Twitter por Mencion al Ciudadano Gobernador
     public function grafico_mencion()
     {
-        $this->db->select("a.screen_name AS nombre, count(a.id) AS cantidad");
+        $this->db->select("count(a.id) AS cantidad");
         $this->db->from("bandeja_respuestas as a");
-        $this->db->like('a.text', '@RMarcoTorres');
-        $this->db->group_by('a.screen_name');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // Estadisticas de Twitter por Mencion al Ciudadano Gobernador  + Etiquetas del Dia
+    public function grafico_mencion_etiqueta()
+    {
+        $this->db->select("count(a.id) AS cantidad");
+        $this->db->from("bandeja_respuestas as a");
+        $this->db->like('a.text', '#');
         $query = $this->db->get();
         return $query->result();
     }

@@ -75,7 +75,9 @@ $(document).ready(function () {
             
         var datos = $.parseJSON(data);
 
-        $.each(datos, function( index, value ){
+        $("h2.count-opr").text(datos.cantidad.cantidad);
+        
+        $.each(datos.grafico, function( index, value ){
             var count_y     = value.y;
             var name_string = value.name;
             var name_string = name_string.split(" ");
@@ -103,7 +105,7 @@ $(document).ready(function () {
                 type: 'pie'
             },
             title: {
-                text: 'Estadisticas por Operadores'
+                text: ''
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -124,7 +126,7 @@ $(document).ready(function () {
             series: [{
                 name: 'Indicador',
                 colorByPoint: true,
-                data: datos
+                data: datos.grafico
             }]
         });
                 
@@ -135,7 +137,9 @@ $(document).ready(function () {
             
         var datos = $.parseJSON(data);
 
-        $.each(datos, function( index, value ){
+        $("h2.count-ins").text(datos.cantidad.cantidad);
+
+        $.each(datos.grafico, function( index, value ){
             var count_y     = value.y;
             var name_string = value.name;
             var name_string = name_string.split(" ");
@@ -163,7 +167,7 @@ $(document).ready(function () {
                 type: 'pie'
             },
             title: {
-                text: 'Estadisticas por Institución'
+                text: ''
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -184,7 +188,7 @@ $(document).ready(function () {
             series: [{
                 name: 'Indicador',
                 colorByPoint: true,
-                data: datos
+                data: datos.grafico
             }]
         });    
     });
@@ -195,56 +199,18 @@ $(document).ready(function () {
         var datos = $.parseJSON(data);
 
         $.each(datos, function( index, value ){
-            var count_y     = value.y;
-            var name_string = value.name;
-            var name_string = name_string.split(" ");
-
-            value  = '<div class="col-lg-3">';
-            value += '<div class="ibox float-e-margins">';
-            value += '<div class="ibox-title">';
-            value += '<h5 style="font-size:12px;">'+name_string[0]+'</h5>';
-            value += '</div>';
-            value += '<div class="ibox-content">';
-            value += '<h1 class="no-margins font-bold text-navy">'+count_y+'</h1>';
-            //value += '<div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>';
-            //value += '<small>Porcentaje</small>';
-            value += '</div>';
-            value += '</div>';
-            value += '</div>';
-            $('div#container-mensiones-count').append(value);
+            var count_y     = value.cantidad;
+            $("h1.count-menciones").text(count_y);
         });
-        
-        $('#container-mensiones').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: 'Estadisticas de Twitter por Mención al Ciudadano Gobernador'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                        }
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Indicador',
-                colorByPoint: true,
-                data: datos
-            }]
-        });    
+    });
+
+    $.get(base_url('/mencion_etiqueta_json'), function(data, status){
+            
+        var datos = $.parseJSON(data);
+
+        $.each(datos, function( index, value ){
+            var count_y     = value.cantidad;
+            $("h1.count-menciones-etiqueta").text(count_y);
+        });
     });
 });
