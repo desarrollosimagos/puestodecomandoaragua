@@ -2,6 +2,8 @@ $(document).ready(function(){
 	// Capturamos la base_url
     var base_url = $("#base_url").val();
 
+    $("#get_ids").tagsinput();
+
     // Apertura nuevos procesos para la asignacion de situaciones
     $('#tab_situaciones').DataTable({
     	"aLengthMenu": [5],
@@ -212,7 +214,7 @@ $(document).ready(function(){
 			
 		}else{
 			
-			$.post(base_url+'entrada/cambiar_bandeja', {'id':$("#id_tweet").val(), 'nueva_bandeja':$("#nueva_bandeja").val(), 'mensaje':$("#detalles").val()}, function (response) {
+			$.post(base_url+'entrada/cambiar_bandeja', {'id':$("#id_tweet").val(), 'nueva_bandeja':$("#nueva_bandeja").val(), 'mensaje':$("#detalles").val(), 'get_ids':$("#get_ids").val()}, function (response) {
 
 				if (response['response'] == "error") {
 				   

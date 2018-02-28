@@ -213,7 +213,7 @@ $(document).ready(function(){
 			
 		}else{
 			
-			$.post(base_url+'politico/cambiar_bandeja', {'id':$("#id_tweet").val(), 'nueva_bandeja':$("#nueva_bandeja").val(), 'mensaje':$("#detalles").val()}, function (response) {
+			$.post(base_url+'politico/cambiar_bandeja', {'id':$("#id_tweet").val(), 'nueva_bandeja':$("#nueva_bandeja").val(), 'mensaje':$("#detalles").val(), 'get_ids':$("#get_ids").val()}, function (response) {
 
 				if (response['response'] == "error") {
 				   

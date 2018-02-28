@@ -74,7 +74,6 @@
 							<textarea class="form-control" id="detalles"></textarea>
 							<input type="hidden" id="id_tweet">
 							<input type="hidden" id="nueva_bandeja">
-							<input type="hidden" id="get_ids">
 						</div>
 					</div>
 					</br></br>
@@ -112,27 +111,11 @@
 			   </center>
 			</h4>
 		 </div>
-		 <div class="modal-body" style="height: 320px;">
-			<table id="tab_situaciones" class="table table-striped table-bordered dt-responsive table-hover dataTables-example" style="width: 100% !important;">
-                <thead>
-                    <tr>
-                        <th>Items</th>
-                        <th>Situación</th>
-                    </tr>
-                </thead>
-                <tbody>
-                	<?php foreach ($situacion as $key => $value) { ?>
-	                	<tr>
-	                        <td>
-	                        	<input type="checkbox" class="check" value="<?php echo $value->id;?>">
-	                        </td>
-	                        <td>
-	                        	<?php echo $value->name;?>
-	                        </td>
-	                    </tr>
-                    <?php }?>
-                </tbody>
-            </table>
+		 <div class="modal-body" style="height: 250px;">
+        	<div class="form-group">
+					<textarea class="form-control" id="get_ids"></textarea>
+				</div>
+			</div>
 		 </div>
 		 
 	  </div>

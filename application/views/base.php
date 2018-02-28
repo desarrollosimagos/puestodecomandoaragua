@@ -28,6 +28,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo assets_url('css/Highcharts/highcharts.css');?>" rel="stylesheet">
     <link href="<?php echo assets_url('css/bootstrap-tagsinput.css');?>" rel="stylesheet">
     <link href="<?php echo assets_url('css/bootstrap-tokenfield.min.css');?>" rel="stylesheet">
+    <style type="text/css">
+    	.bootstrap-tagsinput {
+		    background-color: #fff;
+		    border: 1px solid #ccc;
+		    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		    display: inline-block;
+		    padding: 4px 6px;
+		    color: #555;
+		    vertical-align: middle;
+		    border-radius: 4px;
+		    max-width: 136%;
+		    line-height: 22px;
+		    cursor: text;
+		    width: 100% !important;
+		    height: 119px !important;
+		}
+    </style>
 	
 	<!-- Custom and plugin javascript -->
 	<script src="<?php echo assets_url('js/jquery-3.1.1.min.js');?>"></script>
@@ -242,6 +259,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				        language: "es",
 				        autoclose: true,
 				    });
+
+				    $(".tagsinput").tagsinput();
 					
 					// Función añadida manualmente para alternar entre mini-barra y barra de menú completa u ocultar en dispositivos móviles
 					// .navbar-minimalize = clase del botón de acción

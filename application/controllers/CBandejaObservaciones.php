@@ -149,15 +149,30 @@ class CBandejaObservaciones extends CI_Controller {
 			// Envio de situaciones
 			if($get_ids !=""){
 				foreach ($get_ids_array as $value) {
-					$id = $value;
+
+					// Se guarda la situacion
 					$data = array(
-						'usuario' => $this->session->userdata('logged_in')['id'],
-						'situacion' => $id,
-						'tweet_id' => $id_tweet,
+						'name' => $value,
+						'description' => "Situación de $value",
 						'd_create' => date('Y-m-d H:i:s'),
+						'd_update' => date('Y-m-d H:i:s'),
+
 					);
-			
-					$this->MBandejaEntrada->insert_time_line_situaciones($data);
+
+			        $situacion = $this->situacion->add($data);
+
+			        if($situacion){
+						$id = $situacion;
+						$data = array(
+							'usuario' => $this->session->userdata('logged_in')['id'],
+							'situacion' => $id,
+							'tweet_id' => $id_tweet,
+							'd_create' => date('Y-m-d H:i:s'),
+						);
+				
+						$this->MBandejaEntrada->insert_time_line_situaciones($data);
+			        }
+
 				}
 			}
 			
