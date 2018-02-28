@@ -40,7 +40,7 @@
                                             <?php echo $i; ?>
                                         </td>
                                         <td>
-                                            <?php echo $row->name; ?>
+                                            <?php echo "#".$row->name; ?>
                                         </td>
                                         <td>
                                             <?php echo $row->description; ?>

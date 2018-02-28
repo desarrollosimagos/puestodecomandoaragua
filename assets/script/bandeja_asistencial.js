@@ -1,6 +1,36 @@
 $(document).ready(function(){
 	// Capturamos la base_url
     var base_url = $("#base_url").val();
+
+    // Apertura nuevos procesos para la asignacion de situaciones
+    $('#tab_situaciones').DataTable({
+    	"aLengthMenu": [5],
+    	"pageLength": 5,
+    	"oLanguage": {"sUrl": base_url+"assets/js/es.txt"},
+    });
+
+    $("#check_situacion").on('click', function () {
+    	var check_situacion = $('#check_situacion').is(':checked');
+    	
+    	if (check_situacion == true) {
+    		$(".show-situaciones").show();
+    	}else{
+    		$(".show-situaciones").hide();
+    	}
+    });
+
+    $("button.list-situacion").on('click', function () {
+    	$("#modal_situaciones").modal('show');
+    });
+
+    $("table#tab_situaciones").on('click', 'input.check', function () {
+    	var get_ids = $('input.check:checked').map(function() {
+	    		return $(this).val();
+	    	}).get().join(',');
+    	$("#get_ids").val(get_ids);
+    });
+
+    // Cierre nuevos procesos para la asignacion de situaciones
 	
 	var tabAsistencial = $('#tab_asistencial').DataTable({
         //~ "paging": true,
@@ -142,7 +172,7 @@ $(document).ready(function(){
 			
 		}else{
 			
-			$.post(base_url+'asistencial/cambiar_bandeja', {'id':$("#id_tweet").val(), 'nueva_bandeja':$("#nueva_bandeja").val(), 'mensaje':$("#detalles").val()}, function (response) {
+			$.post(base_url+'asistencial/cambiar_bandeja', {'id':$("#id_tweet").val(), 'nueva_bandeja':$("#nueva_bandeja").val(), 'mensaje':$("#detalles").val(), 'get_ids':$("#get_ids").val()}, function (response) {
 
 				if (response['response'] == "error") {
 				   

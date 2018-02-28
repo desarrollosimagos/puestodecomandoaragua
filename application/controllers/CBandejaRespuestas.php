@@ -9,12 +9,14 @@ class CBandejaRespuestas extends CI_Controller {
 		// Load database
         $this->load->model('MBandejaRespuestas');
         $this->load->model('MBandejaEntrada');
+        $this->load->model('MSituacion','situacion');
 		
     }
 	
 	public function index(){
 		$this->load->view('base');
-		$this->load->view('bandejas/bandeja_respuestas');
+		$data['situacion'] = $this->situacion->obtener();
+		$this->load->view('bandejas/bandeja_respuestas', $data);
 		$this->load->view('footer');
 	}
 	
@@ -63,6 +65,8 @@ class CBandejaRespuestas extends CI_Controller {
 		$id_perfil = $this->session->userdata('logged_in')['profile_id'];
 		$nueva_bandeja = $this->input->post('nueva_bandeja');
 		$mensaje = $this->input->post('mensaje');
+		$get_ids = $this->input->post('get_ids');
+		$get_ids_array = explode(',',$get_ids);
 		
 		// Indicamos a qué tabla será movido el tweet
 		$tabla = "bandeja_resueltos";
@@ -107,6 +111,20 @@ class CBandejaRespuestas extends CI_Controller {
 			
 			$time_line = $this->MBandejaEntrada->insert_time_line($data_bitacora);
 			
+			// Envio de situaciones
+			if($get_ids !=""){
+				foreach ($get_ids_array as $value) {
+					$id = $value;
+					$data = array(
+						'usuario' => $this->session->userdata('logged_in')['id'],
+						'situacion' => $id,
+						'tweet_id' => $id_tweet,
+						'd_create' => date('Y-m-d H:i:s'),
+					);
+			
+					$this->MBandejaEntrada->insert_time_line_situaciones($data);
+				}
+			}
 			
 			if($update && $time_line){
 				

@@ -90,6 +90,11 @@ class MBandejaEntrada extends CI_Model {
 		$this->db->where('b_e.status =', 1);
 		return $this->db->count_all_results();
 	}
+
+	// Método público para registrar time_line_situaciones
+    public function insert_time_line_situaciones($datos) {
+    	return $this->db->insert("time_line_situaciones", $datos);  
+    }
 	
 	// Método público para registrar un tweet en una determinada tabla de bandeja x
     public function insert($tabla, $datos) {

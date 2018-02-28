@@ -26,6 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo assets_url('css/plugins/sweetalert/sweetalert.css');?>" rel="stylesheet">
     <!-- Highcharts css -->
     <link href="<?php echo assets_url('css/Highcharts/highcharts.css');?>" rel="stylesheet">
+    <link href="<?php echo assets_url('css/bootstrap-tagsinput.css');?>" rel="stylesheet">
+    <link href="<?php echo assets_url('css/bootstrap-tokenfield.min.css');?>" rel="stylesheet">
 	
 	<!-- Custom and plugin javascript -->
 	<script src="<?php echo assets_url('js/jquery-3.1.1.min.js');?>"></script>
@@ -38,6 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo assets_url('js/datatables.net-bs/js/dataTables.bootstrap.min.js'); ?>"></script>
 	<script src="<?php echo assets_url('js/datatables.net-responsive/js/dataTables.responsive.min.js'); ?>"></script>
 	<script src="<?php echo assets_url('js/inspinia.js');?>"></script>
+	<script src="<?php echo assets_url('js/bootstrap-tagsinput.js');?>"></script>
 	<script src="<?php echo assets_url('js/plugins/pace/pace.min.js');?>"></script>
 	<script src="<?php echo assets_url('js/plugins/slimscroll/jquery.slimscroll.min.js');?>"></script>
 	 <!-- Sweet alert -->
