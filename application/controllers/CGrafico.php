@@ -36,9 +36,10 @@ class CGrafico extends CI_Controller {
 
 	// Grafico institucion / Situaciones, cada institucion se le asigna una serie de twt y estos se encargan de gestionarlos
 	public function grafico_institucion_situacion()
-	{
-        $response['grafico']  = $this->grafico->grafico_institucion_situacion();
-        $response['cantidad'] = $this->grafico->count_institucion_situacion();
+	{	
+		$param['usuario_id']  = $this->input->get('usuario_id');
+        $response['grafico']  = $this->grafico->grafico_institucion_situacion($param);
+        $response['cantidad'] = $this->grafico->count_institucion_situacion($param);
         echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
 

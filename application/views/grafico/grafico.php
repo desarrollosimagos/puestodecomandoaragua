@@ -173,44 +173,109 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <h5>Instituciones</h5>
-                                <!--<div class="pull-right">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-xs btn-white active">Today</button>
-                                        <button type="button" class="btn btn-xs btn-white">Monthly</button>
-                                        <button type="button" class="btn btn-xs btn-white">Annual</button>
-                                    </div>
-                                </div>-->
-                            </div>
-                            <div class="ibox-content">
-                                <div class="row">
-                                <div class="col-lg-10" style="height: 400px !important;">
-                                    <div class="flot-chart">
-                                        <div id="container-institucion" style="min-width: 100%; height: 400px; max-width: 100%; margin: 0% auto"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="widget style1 blue-bg">
-                                        <div class="row">
-                                            <div class="col-xs-4">
-                                                <i class="fa fa-building fa-5x"></i>
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Instituciones</h5>
+                                        <!--<div class="pull-right">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-xs btn-white active">Today</button>
+                                                <button type="button" class="btn btn-xs btn-white">Monthly</button>
+                                                <button type="button" class="btn btn-xs btn-white">Annual</button>
                                             </div>
-                                            <div class="col-xs-8 text-right">
-                                                <span> Inst </span>
-                                                <h2 class="font-bold count-ins">0</h2>
+                                        </div>-->
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                        <div class="col-lg-10" style="height: 400px !important;">
+                                            <div class="flot-chart">
+                                                <div id="container-institucion" style="min-width: 100%; height: 400px; max-width: 100%; margin: 0% auto"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="widget style1 blue-bg">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <i class="fa fa-building fa-5x"></i>
+                                                    </div>
+                                                    <div class="col-xs-8 text-right">
+                                                        <span> Inst </span>
+                                                        <h2 class="font-bold count-ins">0</h2>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                </div>
-                                </div>
-
                             </div>
                         </div>
-                    </div>
+                        <div class="col-lg-12">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Instituciones / Situaciones</h5>
+                                        <!--<div class="pull-right">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-xs btn-white active">Today</button>
+                                                <button type="button" class="btn btn-xs btn-white">Monthly</button>
+                                                <button type="button" class="btn btn-xs btn-white">Annual</button>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                        <div class="col-lg-9" style="height: 400px !important;">
+                                            <div class="flot-chart">
+                                                <div id="container-institucion-situacion" style="min-width: 100%; height: 400px; max-width: 100%; margin: 0% auto"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="widget style1 blue-bg">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <i class="fa fa-building fa-5x"></i>
+                                                    </div>
+                                                    <div class="col-xs-8 text-right">
+                                                        <span> Hashtags </span>
+                                                        <h2 class="font-bold count-ins-situacion">0</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="widget style1 gray-bg">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <select class="form-control" id="institucion-name">
+                                                            <option value="0">Ver todos</option>
+                                                            <?php foreach ($profile as $key => $value) {?>
+                                                                <option value="<?php echo $value->id?>">
+                                                                    <?php echo $value->name?>
+                                                                </option>
+                                                            <?php }?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3" hidden="">
+                                            <div class="widget style1 gray-bg">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <select class="form-control" id="hashtags-id">
+                                                            <?php foreach ($situacion as $key => $value) {?>
+                                                                <option value="<?php echo $value->id?>">
+                                                                    <?php echo $value->name?>
+                                                                </option>
+                                                            <?php }?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
 </div>
 
 

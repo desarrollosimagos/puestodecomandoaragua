@@ -46,15 +46,39 @@ class MGrafico extends CI_Model {
     }
 
     // Grafico institucion / Situaciones, cada insttitucion se le asigna una serie de twt y estos se encargan de gestionarlos
-    public function grafico_institucion_situacion()
-    {
-        $this->db->select("CONCAT(a.name || ' (', COUNT(a.id),')') AS name, COUNT(a.id) AS y");
-        $this->db->from("profile as a");
-        $this->db->join("bandeja_respuestas AS b", "b.perfil_id=a.id", "inner");
-        $this->db->group_by('a.id, a.name');
-        $this->db->order_by('a.id', 'ASC');
+    public function grafico_institucion_situacion($param)
+    {   
+        if($param['usuario_id'] == 0){
+            $this->db->select("CONCAT(d.name || ' (', COUNT(a.id),')') AS name, COUNT(a.id) AS y");
+        }else{
+            $this->db->select("CONCAT(a.name || ' (', COUNT(c.id),')') AS name, COUNT(a.id) AS y");
+        }
+
+        $this->db->from("situacion as a");
+        $this->db->join("time_line_situaciones AS b", "b.situacion=a.id", "inner");
+        $this->db->join("users AS c", "b.usuario=c.id", "inner");
+        $this->db->join("profile AS d", "c.profile_id=d.id", "inner");
+        if($param['usuario_id'] > 0){
+            $this->db->where('b.usuario', $param['usuario_id']);
+            $this->db->group_by('d.name,a.name');
+        }else{
+            $this->db->group_by('d.name');
+        }
         $query = $this->db->get();
         return $query->result();
+    }
+
+    // Grafico institucion / Situaciones, cantidad de situaciones
+    public function count_institucion_situacion($param)
+    {
+        $this->db->select("count(a.id) AS cantidad");
+        $this->db->from("situacion as a");
+        $this->db->join("time_line_situaciones AS b", "b.situacion=a.id", "inner");
+        if($param['usuario_id'] > 0){
+            $this->db->where('b.usuario', $param['usuario_id']);
+        }
+        $query = $this->db->get();
+        return $query->row();
     }
 
     // Cantidad de instituciones

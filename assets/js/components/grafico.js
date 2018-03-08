@@ -117,6 +117,61 @@ $(document).ready(function () {
         });    
     });
 
+    function institucion_situacion_json(usuario_id){
+        // Grafico por institucion / Situacion
+        $.post(base_url('/institucion_situacion_json?usuario_id='+usuario_id), function(data, status){
+                
+            var datos = $.parseJSON(data);
+
+            $("h2.count-ins-situacion").text(datos.cantidad.cantidad);
+            $('#container-institucion-situacion').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function() {
+                                return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                            }
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: 'Indicador',
+                    colorByPoint: true,
+                    data: datos.grafico
+                }]
+            });    
+        });
+    }
+
+    // Carga automatica de Institucion / Situacion
+    institucion_situacion_json(0);
+
+    $('#institucion-name, #hashtags-id').change(function(){
+        var usuario_id = $("#institucion-name").val();
+        if(usuario_id == 0){
+            institucion_situacion_json(0);
+
+            return true;
+        }
+        institucion_situacion_json(usuario_id);
+    });
+
     // Estadisticas de Twitter por Mencion al Ciudadano Gobernador
     $.post(base_url('/mencion_json'), function(data, status){
             
