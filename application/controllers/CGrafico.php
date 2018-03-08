@@ -3,21 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CGrafico extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function __construct() {
         parent::__construct();
         
@@ -41,11 +26,19 @@ class CGrafico extends CI_Controller {
         echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
 
-	// Grafico institucion, cada insttitucion se le asigna una serie de twt y estos se encargan de gestionarlos
+	// Grafico institucion, cada institucion se le asigna una serie de twt y estos se encargan de gestionarlos
 	public function grafico_institucion()
 	{
         $response['grafico']  = $this->grafico->grafico_institucion();
         $response['cantidad'] = $this->grafico->count_institucion();
+        echo json_encode($response, JSON_NUMERIC_CHECK);
+	}
+
+	// Grafico institucion / Situaciones, cada institucion se le asigna una serie de twt y estos se encargan de gestionarlos
+	public function grafico_institucion_situacion()
+	{
+        $response['grafico']  = $this->grafico->grafico_institucion_situacion();
+        $response['cantidad'] = $this->grafico->count_institucion_situacion();
         echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
 

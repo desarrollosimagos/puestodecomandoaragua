@@ -45,6 +45,18 @@ class MGrafico extends CI_Model {
         return $query->result();
     }
 
+    // Grafico institucion / Situaciones, cada insttitucion se le asigna una serie de twt y estos se encargan de gestionarlos
+    public function grafico_institucion_situacion()
+    {
+        $this->db->select("CONCAT(a.name || ' (', COUNT(a.id),')') AS name, COUNT(a.id) AS y");
+        $this->db->from("profile as a");
+        $this->db->join("bandeja_respuestas AS b", "b.perfil_id=a.id", "inner");
+        $this->db->group_by('a.id, a.name');
+        $this->db->order_by('a.id', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     // Cantidad de instituciones
     public function count_institucion()
     {

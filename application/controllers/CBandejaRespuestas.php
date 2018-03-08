@@ -65,8 +65,6 @@ class CBandejaRespuestas extends CI_Controller {
 		$id_perfil = $this->session->userdata('logged_in')['profile_id'];
 		$nueva_bandeja = $this->input->post('nueva_bandeja');
 		$mensaje = $this->input->post('mensaje');
-		$get_ids = $this->input->post('get_ids');
-		$get_ids_array = explode(',',$get_ids);
 		
 		// Indicamos a qué tabla será movido el tweet
 		$tabla = "bandeja_resueltos";
@@ -111,23 +109,41 @@ class CBandejaRespuestas extends CI_Controller {
 			
 			$time_line = $this->MBandejaEntrada->insert_time_line($data_bitacora);
 			
-			/// Envio de situaciones
-			if($get_ids !=""){
-				foreach ($get_ids_array as $value) {
+			// Envio de situaciones
 
-					// Se guarda la situacion
-					$data = array(
-						'name' => $value,
-						'description' => "Situación de $value",
-						'd_create' => date('Y-m-d H:i:s'),
-						'd_update' => date('Y-m-d H:i:s'),
+			$arreglo_cadena = explode(" ", $mensaje);
+			
+			foreach($arreglo_cadena as $key => $elemento){
 
-					);
+			    $encontrar = "#";
+			    $pos = strpos($elemento, $encontrar);
+			    
+			    if ($pos !== false) {
+			    	$menciones = array(
+			    		"name" => $elemento
+			    	);
+			    	
+			    	$name = $menciones['name'];
 
-			        $situacion = $this->situacion->add($data);
+			    	$name_exits = $this->situacion->obtenerSituacionName($name);
 
-			        if($situacion){
-						$id = $situacion;
+			    	if(count($name_exits) > 0){
+			    		$situacion_id = $name_exits->id;
+			    	}else if(count($name_exits) == 0){
+			    		// Se guarda la situacion
+						$data = array(
+							'name' => $name,
+							'description' => "Situación de $name",
+							'd_create' => date('Y-m-d H:i:s'),
+							'd_update' => date('Y-m-d H:i:s'),
+
+						);
+
+				        $situacion_id = $this->situacion->add($data);
+			    	}
+
+			        if($situacion_id){
+						$id = $situacion_id;
 						$data = array(
 							'usuario' => $this->session->userdata('logged_in')['id'],
 							'situacion' => $id,
@@ -137,8 +153,7 @@ class CBandejaRespuestas extends CI_Controller {
 				
 						$this->MBandejaEntrada->insert_time_line_situaciones($data);
 			        }
-
-				}
+			    } 
 			}
 			
 			if($update && $time_line){

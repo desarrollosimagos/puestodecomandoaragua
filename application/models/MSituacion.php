@@ -38,6 +38,13 @@ class MSituacion extends CI_Model {
         return $query->row();
     }
 
+    // Public method to obtain the users by id
+    public function obtenerSituacionName($name) {
+        $this->db->where('name', $name);
+        $query = $this->db->get('situacion');
+        return $query->row();
+    }
+
     // Public method to update a record 
     public function update($datos) {
         $result = $this->db->where('name =', $datos['name']);
@@ -57,7 +64,18 @@ class MSituacion extends CI_Model {
      public function delete($id) {
         return $this->db->delete('situacion', array('id' => $id));
     }
-    
 
+    // Public method to obtain the users by id
+    public function ajax_situacion($name) {
+        $this->db->like('name', $name);
+        $this->db->select('name');
+        $query = $this->db->get('situacion');
+        $results = array();
+        foreach ($query->result() as $row){
+            $results[] = $row->name;
+
+        }
+        return $results;
+    }
 }
 ?>

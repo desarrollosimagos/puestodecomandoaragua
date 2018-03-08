@@ -59,20 +59,13 @@
 			   </center>
 			</h4>
 		 </div>
-		 <div class="modal-body">
+		 <div class="modal-body" style="height: 200px;">
 			<form id="f_detalles" name="f_detalles" action="" method="post">
-			   <div class="form-group">
-			   		<div class="col-sm-12">
-			   			<button title="Seleccionar Situaciones..." type="button" class="btn btn-outline btn-primary list-situacion">Indicar Situación</button>
-			   		</div>
-			   </div>
-			   <br/>
-			   <br/>
 			   <div class="form-group">
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label style="font-weight:bold;">Detalles</label>
-							<textarea class="form-control" id="detalles"></textarea>
+							<textarea class="form-control" id="detalles" style="width: 511px !important;"></textarea>
 							<input type="hidden" id="id_tweet">
 							<input type="hidden" id="id_perfil">
 							<input type="hidden" id="nueva_bandeja">

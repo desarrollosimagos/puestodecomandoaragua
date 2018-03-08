@@ -59,20 +59,12 @@
 			   </center>
 			</h4>
 		 </div>
-		 <div class="modal-body">
+		 <div class="modal-body" style="height: 200px;">
 			<form id="f_detalles" name="f_detalles" action="" method="post">
-				<div class="form-group">
 			   		<div class="col-sm-12">
-			   			<button title="Seleccionar Situaciones..." type="button" class="btn btn-outline btn-primary list-situacion">Indicar Situación</button>
-			   		</div>
-			   </div>
-			   <br/>
-			   <br/>
-			   <div class="form-group">
-					<div class="col-sm-12">
 						<div class="form-group">
 							<label style="font-weight:bold;">Detalles</label>
-							<textarea class="form-control" id="detalles"></textarea>
+							<textarea class="form-control" id="detalles" style="width: 511px !important;"></textarea>
 							<input type="hidden" id="id_tweet">
 							<input type="hidden" id="nueva_bandeja">
 						</div>
@@ -90,33 +82,7 @@
 						</span>
 					</div>
 					</br></br>
-			   </div>
 			</form>
-		 </div>
-		 
-	  </div>
-   </div>
-</div>
-<!-- Cierre Modal para descripción del movimiento -->
-
-<!-- Apertura Modal lista de situaciones -->
-<div class="modal fade" id="modal_situaciones">
-   <div class="modal-dialog">
-	  <div class="modal-content">
-		 <div class="modal-header" style="background-color:#1ab394">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h4 class="modal-title" style="color:#ffffff">
-			   <center>
-				<span class="glyphicon glyphicon-search"></span>
-				&nbsp;Indique las situaciones
-			   </center>
-			</h4>
-		 </div>
-		 <div class="modal-body" style="height: 250px;">
-        	<div class="form-group">
-					<textarea class="form-control tagsinput" id="get_ids"></textarea>
-				</div>
-			</div>
 		 </div>
 		 
 	  </div>

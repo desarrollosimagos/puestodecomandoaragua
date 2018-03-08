@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Home extends CI_Controller {
 
     public function __construct() {
-        @parent::__construct();
+        parent::__construct();
     }
 
 	// Show login page
@@ -12,6 +12,8 @@ Class Home extends CI_Controller {
 		// Borrar la cache de sesión manualmente
 		//$this->session->sess_destroy();
 		$this->load->view('base');
+		$this->load->view('grafico/grafico');
+		$this->load->view('footer');
 		//~ $this->basicauthpublic->logout();
     }
 

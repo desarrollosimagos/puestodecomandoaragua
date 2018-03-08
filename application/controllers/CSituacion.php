@@ -80,7 +80,10 @@ class CSituacion extends CI_Controller {
         $result = $this->situacion->delete($id);
     }
 
-	
-
-
+    public function ajax_situacion()
+	{
+		$text = $this->input->get('query');
+		$response = $this->situacion->ajax_situacion($text);
+		echo json_encode($response, JSON_NUMERIC_CHECK);
+	}
 }

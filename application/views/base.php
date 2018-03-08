@@ -28,26 +28,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo assets_url('css/Highcharts/highcharts.css');?>" rel="stylesheet">
     <link href="<?php echo assets_url('css/bootstrap-tagsinput.css');?>" rel="stylesheet">
     <link href="<?php echo assets_url('css/bootstrap-tokenfield.min.css');?>" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <style type="text/css">
-    	.bootstrap-tagsinput {
-		    background-color: #fff;
-		    border: 1px solid #ccc;
-		    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-		    display: inline-block;
-		    padding: 4px 6px;
-		    color: #555;
-		    vertical-align: middle;
-		    border-radius: 4px;
-		    max-width: 136%;
-		    line-height: 22px;
-		    cursor: text;
-		    width: 100% !important;
-		    height: 119px !important;
+		ul.ui-autocomplete {
+		     z-index: 99999 !important;
 		}
     </style>
 	
 	<!-- Custom and plugin javascript -->
-	<script src="<?php echo assets_url('js/jquery-3.1.1.min.js');?>"></script>
+	<!--<script src="<?php echo assets_url('js/jquery-3.1.1.min.js');?>"></script>-->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
 	<script src="<?php echo assets_url('js/bootstrap.min.js');?>"></script>
 	<script src="<?php echo assets_url('js/plugins/metisMenu/jquery.metisMenu.js');?>"></script>
 	<script src="<?php echo assets_url('js/plugins/slimscroll/jquery.slimscroll.min.js');?>"></script>
@@ -75,7 +68,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <!-- Date range picker -->
     <script src="<?php echo assets_url('js/plugins/daterangepicker/daterangepicker.js');?>"></script>
 		<!-- Typehead -->
-    <script src="<?php echo assets_url('js/plugins/typehead/bootstrap3-typeahead.min.js');?>"></script>
+    <!--<script src="<?php echo assets_url('js/plugins/typehead/bootstrap3-typeahead.min.js');?>"></script>-->
+    <script src="<?php echo assets_url('js/typeahead.bundle.js');?>"></script>
+    <script src="<?php echo assets_url('js/jquery.caret.js');?>"></script>
     <!-- Highcharts js -->
     <script src="<?php echo assets_url('js/Highcharts/highcharts.js');?>"></script>
     <script src="<?php echo assets_url('js/Highcharts/highcharts-3d.js');?>"></script>
@@ -251,6 +246,106 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			
 			<script>
 				$(document).ready(function () {
+					window.globalVar;
+
+					var base_url = function(path) {
+				        var protocolo = location.protocol;
+				        var base = window.location.host;
+
+				        // var ur = base.replace(/(.*)\.(.*?)$/, "$1");
+				        var url  = base;
+				        if(path !== undefined){
+				            url = url+path;
+				        }
+				        url = protocolo+'//'+url
+				        return url;
+				    };
+				
+				    function datos()
+					{
+					    return $.ajax({
+					        url: '<?php echo base_url("/situacion_mensiones_json"); ?>',
+					        method: 'POST',
+					        async: false,
+				        });
+					}
+
+					$.when( datos() ).done(function(response){
+						globalVar = response;
+						globalVar = $.parseJSON(globalVar);
+						//console.log(globalVar);
+					});
+
+					//initialization
+					function init(){
+					    var autoSuggestion = document.getElementsByClassName('ui-autocomplete');
+					    if(autoSuggestion.length > 0){
+					        autoSuggestion[0].style.zIndex = 1051;
+					    }
+					}
+
+					$( function() {
+						
+						function split( val ) {
+							return val.split( / \s*/ );
+						}
+						function extractLast( term ) {
+							return split( term ).pop();
+						}
+
+						$( "#detalles" )
+							// don't navigate away from the field on tab when selecting an item
+							.on( "keydown", function( event ) {
+								if ( event.keyCode === $.ui.keyCode.TAB &&
+										$( this ).autocomplete( "instance" ).menu.active ) {
+									event.preventDefault();
+								}
+							})
+							.autocomplete({
+								minLength: 0,
+								 appendTo: $("#modal_detalles"),
+								source: function( request, response ) {
+									// delegate back to autocomplete, but extract the last term
+									response( $.ui.autocomplete.filter(
+										globalVar, extractLast( request.term ) ) );
+								},
+								focus: function() {
+									// prevent value inserted on focus
+									return false;
+								},
+								select: function( event, ui ) {
+									var terms = split( this.value );
+									// remove the current input
+									terms.pop();
+									// add the selected item
+									terms.push( ui.item.value );
+									// add placeholder to get the comma-and-space at the end
+									terms.push( "" );
+									this.value = terms.join( " " );
+									return false;
+								}
+							});
+					} );
+
+					/* Evento para cuando el usuario libera la tecla escrita dentro del input */
+					$('#detalles').change(function(){
+					    /* Obtengo el valor contenido dentro del input */
+					    var value = $(this).val();
+					 
+					    /* Elimino todos los espacios en blanco que tenga la cadena delante y detrás */
+					    var value_without_space = $.trim(value);
+					 
+					    /* Muestro una alerta al usuario */
+					    //alert('El texto que ha ingresado contiene espacios y serán eliminados');
+					 
+					    /* Cambio el valor contenido por el valor sin espacios */
+					    $(this).val(value_without_space);
+					});
+
+					
+
+					//var myTypeahead = new MyTypeahead('#textarea', datos_json, {levenshteinDistance: 3, vertAdjustMenu: true, trigger: '@'});
+
 					// Aplicamos select2() a todos los combos select
 					$("select").select2();
 					
@@ -260,8 +355,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				        autoclose: true,
 				    });
 
-				    $(".tagsinput").tagsinput();
-					
 					// Función añadida manualmente para alternar entre mini-barra y barra de menú completa u ocultar en dispositivos móviles
 					// .navbar-minimalize = clase del botón de acción
 					// .md-skin = clase de la etiqueta body asignada automáticamente por los plugins de la plantilla
@@ -301,7 +394,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//~ }
 				
 			</script>
-			
 		<!-- Validación de acciones -->
 		<?php echo validar_acciones(); ?>
 		<!-- Validación de acciones -->		

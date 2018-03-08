@@ -1,3 +1,4 @@
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Bandeja de entrada</h2>
@@ -47,7 +48,8 @@
 </div>
 
 <!-- Modal para descripción del movimiento -->
-<div class="modal fade" id="modal_detalles">
+
+	<div class="modal fade" id="modal_detalles" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden=true data-backdrop="static" data-keyboard="false">
    <div class="modal-dialog">
 	  <div class="modal-content">
 		 <div class="modal-header" style="background-color:#1ab394">
@@ -59,15 +61,8 @@
 			   </center>
 			</h4>
 		 </div>
-		 <div class="modal-body" style="height: 250px;">
+		 <div class="modal-body" style="height: 200px;">
 			<form id="f_detalles" name="f_detalles" action="" method="post">
-				   <div class="form-group">
-				   		<div class="col-sm-12">
-				   			<button title="Seleccionar Situaciones..." type="button" class="btn btn-outline btn-primary list-situacion">Indicar Situación</button>
-				   		</div>
-				   </div>
-				   <br/>
-				   <br/>
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label style="font-weight:bold;">Detalles</label>
@@ -96,31 +91,7 @@
 	  </div>
    </div>
 </div>
-<!-- Cierre Modal para descripción del movimiento -->
 
-<!-- Apertura Modal lista de situaciones -->
-<div class="modal fade" id="modal_situaciones">
-   <div class="modal-dialog">
-	  <div class="modal-content">
-		 <div class="modal-header" style="background-color:#1ab394">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h4 class="modal-title" style="color:#ffffff">
-			   <center>
-				<span class="glyphicon glyphicon-search"></span>
-				&nbsp;Indique las situaciones
-			   </center>
-			</h4>
-		 </div>
-		 <div class="modal-body" style="height: 250px;">
-        	<div class="form-group">
-					<textarea class="form-control" id="get_ids"></textarea>
-				</div>
-			</div>
-		 </div>
-		 
-	  </div>
-   </div>
-</div>
 <!-- Fin Modal lista de situaciones -->
 
  <!-- Page-Level Scripts -->

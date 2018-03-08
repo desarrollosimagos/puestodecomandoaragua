@@ -85,6 +85,7 @@ $route['situacion'] = 'CSituacion';
 $route['situacion_register'] = 'CSituacion/register';
 $route['situacion_edit/(:num)'] = 'CSituacion/edit/$1';
 $route['situacion_delete/(:num)'] = 'CSituacion/delete/$1';
+$route['situacion_mensiones_json'] = 'CSituacion/ajax_situacion';
 
 /*   Menús */
 $route['menus'] = 'CMenus';
@@ -180,7 +181,8 @@ $route['social_profile/edit'] = 'CPerfilSocial/edit';
 $route['social_profile/associate'] = 'CPerfilSocial/associate';
 
 /*   Graficos  */
-$route['home'] = 'CGrafico';
+$route['home'] = 'Home/home/';
+$route['observacion'] = 'CGrafico';
 $route['operador_json'] = 'CGrafico/grafico_operador';
 $route['institucion_json'] = 'CGrafico/grafico_institucion';
 $route['mencion_json'] = 'CGrafico/grafico_mencion';

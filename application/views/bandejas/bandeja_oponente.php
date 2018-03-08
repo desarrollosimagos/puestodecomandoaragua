@@ -59,15 +59,8 @@
 			   </center>
 			</h4>
 		 </div>
-		 <div class="modal-body">
+		 <div class="modal-body" style="height: 250px;">
 			<form id="f_detalles" name="f_detalles" action="" method="post">
-			   <div class="form-group">
-			   		<div class="col-sm-12">
-			   			<button title="Seleccionar Situaciones..." type="button" class="btn btn-outline btn-primary list-situacion">Indicar Situación</button>
-			   		</div>
-			   </div>
-			   <br/>
-			   <br/>
 			   <div class="form-group">
 					<div class="col-sm-12">
 						<div class="form-group">
