@@ -120,42 +120,46 @@ $(document).ready(function () {
     function institucion_situacion_json(usuario_id){
         // Grafico por institucion / Situacion
         $.post(base_url('/institucion_situacion_json?usuario_id='+usuario_id), function(data, status){
-                
             var datos = $.parseJSON(data);
+            if(datos.cantidad.cantidad != 0){
 
-            $("h2.count-ins-situacion").text(datos.cantidad.cantidad);
-            $('#container-institucion-situacion').highcharts({
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false,
-                    type: 'pie'
-                },
-                title: {
-                    text: ''
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            formatter: function() {
-                                return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                            }
-                        },
-                        showInLegend: true
-                    }
-                },
-                series: [{
-                    name: 'Indicador',
-                    colorByPoint: true,
-                    data: datos.grafico
-                }]
-            });    
+                $("h2.count-ins-situacion").text(datos.cantidad.cantidad);
+                $('#container-institucion-situacion').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                formatter: function() {
+                                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                                }
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: 'Indicador',
+                        colorByPoint: true,
+                        data: datos.grafico
+                    }]
+                }); 
+            }else{
+                swal("Disculpe,", "no se encuentran registro asociados...");
+                institucion_situacion_json(0);
+            }
         });
     }
 
