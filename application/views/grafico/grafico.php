@@ -167,6 +167,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-3">
+                                    <div class="widget style1 gray-bg">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <input type="text" id="desde-operador" placeholder="Desde: 00-00-0000" class="form-control datepicker">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <input type="text" id="hasta-operador" placeholder="Hasta: 00-00-0000" class="form-control datepicker">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                                 </div>
 
@@ -267,6 +281,20 @@
                                                                 </option>
                                                             <?php }?>
                                                         </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="widget style1 gray-bg">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <input type="text" id="desde-ins-sit" placeholder="Desde: 00-00-0000" class="form-control datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <input type="text" id="hasta-ins-sit" placeholder="Hasta: 00-00-0000" class="form-control datepicker">
                                                     </div>
                                                 </div>
                                             </div>

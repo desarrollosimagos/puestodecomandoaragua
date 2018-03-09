@@ -16,44 +16,59 @@ $(document).ready(function () {
     };
 
     // Grafico por operador
-    $.post(base_url('/operador_json'), function(data, status){
-            
-        var datos = $.parseJSON(data);
-
-        $("h2.count-opr").text(datos.cantidad.cantidad);
-        $('#container-operador').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                        }
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Indicador',
-                colorByPoint: true,
-                data: datos.grafico
-            }]
-        });
+    function grafico_operador(desde, hasta){
+        $.post(base_url('/operador_json?desde='+desde+'&hasta='+hasta), function(data, status){
                 
+            var datos = $.parseJSON(data);
+
+            $("h2.count-opr").text(datos.cantidad.cantidad);
+            $('#container-operador').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function() {
+                                return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                            }
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: 'Indicador',
+                    colorByPoint: true,
+                    data: datos.grafico
+                }]
+            });
+                    
+        });
+    }
+
+    grafico_operador(0, 0);
+
+    $('#desde-operador, #hasta-operador').change(function(){
+        var desde_operador = $("#desde-operador").val();
+        var hasta_operador = $("#hasta-operador").val();
+
+        if(desde_operador ==0 && hasta_operador ==0){
+            grafico_operador(0, 0);
+        }else if(desde_operador !=0 && hasta_operador !=0){
+            grafico_operador(desde_operador, hasta_operador);
+        }
     });
 
     // Grafico por institucion
@@ -117,9 +132,9 @@ $(document).ready(function () {
         });    
     });
 
-    function institucion_situacion_json(usuario_id){
+    function institucion_situacion_json(usuario_id, desde, hasta){
         // Grafico por institucion / Situacion
-        $.post(base_url('/institucion_situacion_json?usuario_id='+usuario_id), function(data, status){
+        $.post(base_url('/institucion_situacion_json?usuario_id='+usuario_id+'&desde='+desde+'&hasta='+hasta), function(data, status){
             var datos = $.parseJSON(data);
             if(datos.cantidad.cantidad != 0){
 
@@ -158,22 +173,25 @@ $(document).ready(function () {
                 }); 
             }else{
                 swal("Disculpe,", "no se encuentran registro asociados...");
-                institucion_situacion_json(0);
+                institucion_situacion_json(0,0,0);
             }
         });
     }
 
     // Carga automatica de Institucion / Situacion
-    institucion_situacion_json(0);
+    institucion_situacion_json(0,0,0);
 
-    $('#institucion-name, #hashtags-id').change(function(){
-        var usuario_id = $("#institucion-name").val();
+    $('#institucion-name, #hashtags-id ,#desde-ins-sit, #hasta-ins-sit').change(function(){
+        var usuario_id    = $("#institucion-name").val();
+        var desde_ins_sit = $("#desde-ins-sit").val();
+        var hasta_ins_sit = $("#hasta-ins-sit").val();
         if(usuario_id == 0){
-            institucion_situacion_json(0);
-
-            return true;
+            institucion_situacion_json(0,0,0);
+        }else if(usuario_id !=0 && desde_ins_sit ==0 && hasta_ins_sit ==0){
+            institucion_situacion_json(usuario_id, 0, 0);
+        }else if(usuario_id !=0 && desde_ins_sit !=0 && hasta_ins_sit !=0){
+            institucion_situacion_json(usuario_id, desde_ins_sit, hasta_ins_sit);
         }
-        institucion_situacion_json(usuario_id);
     });
 
     // Estadisticas de Twitter por Mencion al Ciudadano Gobernador

@@ -350,7 +350,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					$("select").select2();
 					
 					$('.datepicker').datepicker({
-				        format: "dd/mm/yyyy",
+				        format: "dd-mm-yyyy",
 				        language: "es",
 				        autoclose: true,
 				    });

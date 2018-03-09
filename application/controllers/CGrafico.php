@@ -20,9 +20,12 @@ class CGrafico extends CI_Controller {
 
 	// Grafico operador
 	public function grafico_operador()
-	{
-        $response['grafico']  = $this->grafico->grafico_operador();
-        $response['cantidad'] = $this->grafico->count_operador();
+	{	
+		$param['desde']       = $this->input->get('desde');
+		$param['hasta']       = $this->input->get('hasta');
+        $response['grafico']  = $this->grafico->grafico_operador($param);
+        //echo $this->db->last_query(); exit;
+        $response['cantidad'] = $this->grafico->count_operador($param);
         echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
 
@@ -38,7 +41,10 @@ class CGrafico extends CI_Controller {
 	public function grafico_institucion_situacion()
 	{	
 		$param['usuario_id']  = $this->input->get('usuario_id');
+		$param['desde']       = $this->input->get('desde');
+		$param['hasta']       = $this->input->get('hasta');
         $response['grafico']  = $this->grafico->grafico_institucion_situacion($param);
+        //echo $this->db->last_query(); exit;
         $response['cantidad'] = $this->grafico->count_institucion_situacion($param);
         echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
