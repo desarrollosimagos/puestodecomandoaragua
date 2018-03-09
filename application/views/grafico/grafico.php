@@ -171,12 +171,12 @@
                                     <div class="widget style1 gray-bg">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <input type="text" id="desde-operador" placeholder="Desde: 00-00-0000" class="form-control datepicker">
+                                                <input type="text" id="desde-operador" placeholder="00-00-0000" class="form-control datepicker">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <input type="text" id="hasta-operador" placeholder="Hasta: 00-00-0000" class="form-control datepicker">
+                                                <input type="text" id="hasta-operador" placeholder="00-00-0000" class="form-control datepicker">
                                             </div>
                                         </div>
                                     </div>
@@ -214,6 +214,20 @@
                                                     <div class="col-xs-8 text-right">
                                                         <span> Inst </span>
                                                         <h2 class="font-bold count-ins">0</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="widget style1 gray-bg">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <input type="text" id="desde-institucion" placeholder="00-00-0000" class="form-control datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <input type="text" id="hasta-institucion" placeholder="00-00-0000" class="form-control datepicker">
                                                     </div>
                                                 </div>
                                             </div>
@@ -289,12 +303,12 @@
                                             <div class="widget style1 gray-bg">
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <input type="text" id="desde-ins-sit" placeholder="Desde: 00-00-0000" class="form-control datepicker">
+                                                        <input type="text" id="desde-ins-sit" placeholder="00-00-0000" class="form-control datepicker">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <input type="text" id="hasta-ins-sit" placeholder="Hasta: 00-00-0000" class="form-control datepicker">
+                                                        <input type="text" id="hasta-ins-sit" placeholder="00-00-0000" class="form-control datepicker">
                                                     </div>
                                                 </div>
                                             </div>

@@ -40,11 +40,14 @@ class MGrafico extends CI_Model {
     }
 
     // Grafico institucion, cada insttitucion se le asigna una serie de twt y estos se encargan de gestionarlos
-    public function grafico_institucion()
+    public function grafico_institucion($param)
     {
         $this->db->select("CONCAT(a.name || ' (', COUNT(a.id),')') AS name, COUNT(a.id) AS y");
         $this->db->from("profile as a");
         $this->db->join("bandeja_respuestas AS b", "b.perfil_id=a.id", "inner");
+        if($param['desde'] !=0 && $param['hasta'] !=0){
+            $this->db->where("b.created_at BETWEEN '".$param['desde']."' AND '".$param['hasta']."'");
+        }
         $this->db->group_by('a.id, a.name');
         $this->db->order_by('a.id', 'ASC');
         $query = $this->db->get();
@@ -94,10 +97,13 @@ class MGrafico extends CI_Model {
     }
 
     // Cantidad de instituciones
-    public function count_institucion()
+    public function count_institucion($param)
     {
         $this->db->select("count(a.id) AS cantidad");
         $this->db->from("profile as a");
+        if($param['desde'] !=0 && $param['hasta'] !=0){
+            $this->db->where("a.d_create BETWEEN '".$param['desde']."' AND '".$param['hasta']."'");
+        }
         $query = $this->db->get();
         return $query->row();
     }

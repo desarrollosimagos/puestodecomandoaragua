@@ -72,64 +72,79 @@ $(document).ready(function () {
     });
 
     // Grafico por institucion
-    $.post(base_url('/institucion_json'), function(data, status){
+    function institucion(desde, hasta){
+        $.post(base_url('/institucion_json?desde='+desde+'&hasta='+hasta), function(data, status){
+                
+            var datos = $.parseJSON(data);
+
+            $("h2.count-ins").text(datos.cantidad.cantidad);
+
+            $.each(datos.grafico, function( index, value ){
+                var count_y     = value.y;
+                var name_string = value.name;
+                var name_string = name_string.split(" ");
+
+                value  = '<div class="col-lg-3">';
+                value += '<div class="ibox float-e-margins">';
+                value += '<div class="ibox-title">';
+                value += '<h5 style="font-size:12px;">'+name_string[0]+'</h5>';
+                value += '</div>';
+                value += '<div class="ibox-content">';
+                value += '<h1 class="no-margins font-bold text-navy">'+count_y+'</h1>';
+                //value += '<div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>';
+                //value += '<small>Porcentaje</small>';
+                value += '</div>';
+                value += '</div>';
+                value += '</div>';
+                $('div#container-institucion-count').append(value);
+            });
             
-        var datos = $.parseJSON(data);
-
-        $("h2.count-ins").text(datos.cantidad.cantidad);
-
-        $.each(datos.grafico, function( index, value ){
-            var count_y     = value.y;
-            var name_string = value.name;
-            var name_string = name_string.split(" ");
-
-            value  = '<div class="col-lg-3">';
-            value += '<div class="ibox float-e-margins">';
-            value += '<div class="ibox-title">';
-            value += '<h5 style="font-size:12px;">'+name_string[0]+'</h5>';
-            value += '</div>';
-            value += '<div class="ibox-content">';
-            value += '<h1 class="no-margins font-bold text-navy">'+count_y+'</h1>';
-            //value += '<div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>';
-            //value += '<small>Porcentaje</small>';
-            value += '</div>';
-            value += '</div>';
-            value += '</div>';
-            $('div#container-institucion-count').append(value);
+            $('#container-institucion').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function() {
+                                return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                            }
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: 'Indicador',
+                    colorByPoint: true,
+                    data: datos.grafico
+                }]
+            });    
         });
-        
-        $('#container-institucion').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                        }
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Indicador',
-                colorByPoint: true,
-                data: datos.grafico
-            }]
-        });    
+    }
+
+    institucion(0, 0);
+
+    $('#desde-institucion, #hasta-institucion').change(function(){
+        var desde_institucion = $("#desde-institucion").val();
+        var hasta_institucion = $("#hasta-institucion").val();
+
+        if(desde_institucion ==0 && hasta_institucion ==0){
+            institucion(0, 0);
+        }else if(desde_institucion !=0 && hasta_institucion !=0){
+            institucion(desde_institucion, hasta_institucion);
+        }
     });
 
     function institucion_situacion_json(usuario_id, desde, hasta){
