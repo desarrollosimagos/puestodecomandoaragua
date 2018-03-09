@@ -149,6 +149,7 @@ $(document).ready(function () {
 
     function institucion_situacion_json(usuario_id, desde, hasta){
         // Grafico por institucion / Situacion
+        var institucion_name = $("#institucion-name :selected").text();
         $.post(base_url('/institucion_situacion_json?usuario_id='+usuario_id+'&desde='+desde+'&hasta='+hasta), function(data, status){
             var datos = $.parseJSON(data);
             if(datos.cantidad.cantidad != 0){

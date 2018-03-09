@@ -51,7 +51,7 @@ class CSituacion extends CI_Controller {
     public function add() {
 		
 		$data = array(
-			'name' => $this->input->post('name'),
+			'name' => "#".$this->input->post('name'),
 			'description' => $this->input->post('description'),
 			'd_create' => date('Y-m-d H:i:s'),
 			'd_update' => date('Y-m-d H:i:s'),
@@ -65,7 +65,7 @@ class CSituacion extends CI_Controller {
 		
 		$data = array(
 			'id' => $this->input->post('id'),
-			'name' => $this->input->post('name'),
+			'name' => "#".$this->input->post('name'),
 			'description' => $this->input->post('description'),
 			'd_create' => date('Y-m-d H:i:s'),
 			'd_update' => date('Y-m-d H:i:s'),
