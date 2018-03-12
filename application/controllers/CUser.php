@@ -110,6 +110,12 @@ class CUser extends CI_Controller {
         $this->load->view('user/editar', $data);
 		$this->load->view('footer');
     }
+
+    public function change_users()
+	{
+		$datos = $this->input->post();
+        $this->MUser->change_users($datos);
+	}
 	
 	// Método para actualizar
     public function update() {

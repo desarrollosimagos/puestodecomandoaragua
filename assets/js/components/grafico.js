@@ -188,7 +188,7 @@ $(document).ready(function () {
                     }]
                 }); 
             }else{
-                swal("Disculpe,", "no se encuentran registro asociados...");
+                //swal("Disculpe,", "no se encuentran registro asociados...");
                 institucion_situacion_json(0,0,0);
             }
         });

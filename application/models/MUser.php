@@ -207,5 +207,22 @@ class MUser extends CI_Model {
         return $result->result();
     }
 
+    public function change_users($datos)
+    {
+        $result = $this->db->where('password =', 'pbkdf2_sha256$12000$' . hash("sha256", $datos['password_f']));
+        $result = $this->db->get('users');
+        if ($result->num_rows() > 0) {
+            $this->db->where('id', $datos['id']);
+            $datos  = array(
+                'password'  => 'pbkdf2_sha256$12000$' . hash("sha256", $datos['password']),
+                );
+
+            $this->db->update('users', $datos);
+            echo 1;
+        } else {
+            echo 2;
+        }
+    }
+
 }
 ?>

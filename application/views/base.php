@@ -99,6 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</a>
 							<ul class="dropdown-menu animated fadeInRight m-t-xs">
 								<li><a href="<?php echo base_url();?>home">Inicio</a></li>
+								<li><a class="change_users">Cambiar contraseña</a></li>
 								<!--<li><a href="">Perfil</a></li>-->
 								<!--<li><a href="contacts.html">Contactos</a></li>-->
 								<li class="divider"></li>
@@ -243,9 +244,97 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			
 			<input type="hidden" value="<?php echo $this->session->userdata('logged_in')['group']; ?>" id="group_id">
+
+			<div class="modal fade" id="div_cambio_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	            <div class="modal-dialog" role="document">
+	                <div class="modal-content">
+	                    <div class="modal-body">
+	                        <form method="post" enctype="multipart/form-data" id="frmpassword">
+	                            <div class="col-xs-12">
+	                                <div class="form-group col-xs-6" style="margin:auto;">
+	                                    <label>Contraseña anterior</label>
+	                                    <input style="text-transform: lowercase;" type="password" id='password_f' name='password_f' class="form-control" placeholder="Contraseña anterior" autofocus='autofocus'/>
+	                                </div>
+	                                <div class="form-group col-xs-6" style="margin:auto;">
+	                                    <label>Contraseña nueva</label>
+	                                    <input style="text-transform: lowercase;" type="password" id='password_new' name='password' class="form-control" placeholder="Contraseña nueva"/>
+	                                </div>
+	                            </div>
+	                            <div class="col-xs-12">
+	                                <div class="form-group col-xs-12">
+	                                    <label>Ingrese de nuevo la contraseña</label>
+	                                    <input style="text-transform: lowercase;" type="password" id='password_new_r' class="form-control" placeholder="Repita su contraseña"/>
+	                                    <input type="hidden" name='id' value="<?php echo $this->session->userdata['logged_in']['id']; ?>"/>
+	                                </div>
+	                            </div>
+	                        </form>
+	                    </div>
+	                    <div class="modal-footer">
+	                        <button type="button" class="btn btn-success actualizar_passwd">Cambiar</button>
+	                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cerrar</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
 			
 			<script>
 				$(document).ready(function () {
+
+					$("a.change_users").click(function () {
+						$('div#div_cambio_user').modal({backdrop: 'static', keyboard: false});
+					});
+
+					$(".actualizar_passwd").click(function () {
+		                var $password = $("#password_f");
+		                var $password_new = $("#password_new");
+		                var $password_new_r = $("#password_new_r");
+
+		                if ($password.val() == "") {
+		                    swal("Disculpe,", "debe ingresar su contraseña anterior");
+		                    $password.focus();
+
+		                } else if ($password_new.val() == "") {
+		                    swal("Disculpe,", "debe ingresar su contraseña nueva");
+		                    $password_new.focus();
+
+		                } else if ($password_new_r.val() == "") {
+		                 	swal("Disculpe,", "ingrese de nuevo su contraseña");
+		                    $password_new_r.focus();
+
+		                 } else if ($password_new.val() != $password_new_r.val()) {
+		                    swal("Disculpe,", "las contraseñas no coinciden");
+		                    $password_new_r.focus();
+
+		                } else {
+		                	swal({
+					            title: "¿Está seguro de cambiar su contraseña?",
+					            text: "Asegurece de que su contraseña este formulada correctamente",
+					            type: "warning",
+					            showCancelButton: true,
+					            confirmButtonColor: "#DD6B55",
+					            confirmButtonText: "Aceptar",
+					            cancelButtonText: "Cancelar",
+					            closeOnConfirm: false,
+					            closeOnCancel: true
+					          },
+					          function(isConfirm){
+				                if (isConfirm) {
+				                  $.post('<?php echo base_url(); ?>CUser/change_users',$("#frmpassword").serialize(), function (response) {
+				                                  if (response == 1) {
+				                                      swal("Registro actualizado correctamente...");
+				                                      location.reload();
+				                                  }else if (response == 2) {
+				                                      swal("Disculpe,", "las contraseñas anteriores no es correcta");
+				                                  }
+				                              });
+				                } else {
+				                  swal("Rectificar","Puede rectificar sus datos nuevamente!");
+				                }
+					          });
+
+		                }
+		            });
+
 					window.globalVar;
 
 					var base_url = function(path) {
