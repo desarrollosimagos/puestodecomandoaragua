@@ -108,13 +108,36 @@ class MGrafico extends CI_Model {
         return $query->row();
     }
 
-    // Estadisticas de Twitter por Mencion al Ciudadano Gobernador
-    public function grafico_mencion()
+    // Estadisticas de Twitter, conteo de por bandejas
+    public function bandeja_entrada()
     {
         $this->db->select("count(a.id) AS cantidad");
-        $this->db->from("bandeja_respuestas as a");
+        $this->db->from("bandeja_entrada as a");
         $query = $this->db->get();
-        return $query->result();
+        return $query->row();
+    }
+    public function bandeja_politico()
+    {
+        $this->db->select("count(a.id) AS cantidad");
+        $this->db->from("bandeja_politico as a");
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function bandeja_asistencial()
+    {
+        $this->db->select("count(a.id) AS cantidad");
+        $this->db->from("bandeja_asistencial as a");
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function bandeja_operantes()
+    {
+        $this->db->select("count(a.id) AS cantidad");
+        $this->db->from("bandeja_operantes as a");
+        $query = $this->db->get();
+        return $query->row();
     }
 
     // Estadisticas de Twitter por Mencion al Ciudadano Gobernador  + Etiquetas del Dia

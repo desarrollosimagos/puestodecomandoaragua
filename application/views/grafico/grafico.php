@@ -81,19 +81,90 @@
 </div>
 <div class="wrapper wrapper-content">
         <div class="row">
-                    <div class="col-lg-3">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <!--<span class="label label-success pull-right">Monthly</span>-->
-                                <h5>Menciones</h5>
-                            </div>
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="slick">
+                        <div>
                             <div class="ibox-content">
-                                <h1 class="no-margins count-menciones">0</h1>
-                                <!--<div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>-->
-                                <small>Total menciones</small>
+                                <div class="col-lg-3">
+                                    <div class="widget style1 yellow-bg">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <i class="fa fa-twitter fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <span> Bandeja entrada </span>
+                                                <h1 class="font-bold count-bandeja-entrada">0</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="widget style1 blue-bg">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <i class="fa fa-twitter fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <span> Bandeja Político </span>
+                                                <h1 class="font-bold count-bandeja-politico">0</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="widget style1 red-bg">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <i class="fa fa-twitter fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <span> Bandeja asistencial </span>
+                                                <h1 class="font-bold count-bandeja-asistencial">0</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="widget style1 navy-bg">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <i class="fa fa-twitter fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <span> Bandeja operantes </span>
+                                                <h1 class="font-bold count-bandeja-operantes">0</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                        <div class="ibox-content">
+                            <h2>Slide 2</h2>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                unknown printer took a galley of type and scrambled it to make a type specimen
+                                book. It has survived not only five centuries, but also the leap.
+                            </p>
+                        </div>
+                        </div>
+                        <div>
+                            <div class="ibox-content">
+                                <h2>Slide 3</h2>
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                    unknown printer took a galley of type and scrambled it to make a type specimen
+                                    book. It has survived not only five centuries, but also the leap.
+                                </p>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
                     <!--<div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">

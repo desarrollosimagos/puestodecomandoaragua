@@ -212,13 +212,11 @@ $(document).ready(function () {
 
     // Estadisticas de Twitter por Mencion al Ciudadano Gobernador
     $.post(base_url('/mencion_json'), function(data, status){
-            
         var datos = $.parseJSON(data);
-
-        $.each(datos, function( index, value ){
-            var count_y     = value.cantidad;
-            $("h1.count-menciones").text(count_y);
-        });
+        $("h1.count-bandeja-entrada").text(datos.bandeja_entrada.cantidad);
+        $("h1.count-bandeja-politico").text(datos.bandeja_politico.cantidad);
+        $("h1.count-bandeja-asistencial").text(datos.bandeja_asistencial.cantidad);
+        $("h1.count-bandeja-operantes").text(datos.bandeja_operantes.cantidad);
     });
 
     $.post(base_url('/mencion_etiqueta_json'), function(data, status){

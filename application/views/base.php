@@ -17,6 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link href="<?php echo assets_url('css/plugins/dataTables/datatables.min.css');?>" rel="stylesheet">
 	<link href="<?php echo assets_url('css/plugins/select2/select2.min.css');?>" rel="stylesheet">
 	<link href="<?php echo assets_url('js/datatables.net-bs/css/dataTables.bootstrap.css'); ?>" rel="stylesheet" />
+	<!-- Slick -->
+	<link href="<?php echo assets_url('css/slick/slick.css');?>" rel="stylesheet">
+	<link href="<?php echo assets_url('css/slick/slick-theme.css');?>" rel="stylesheet">
+	<link href="<?php echo assets_url('css/slick/animate.css');?>" rel="stylesheet">
+
     <link rel="stylesheet" href="<?php echo assets_url('css/dataTables.responsive.css'); ?>">
     <link href="<?php echo assets_url('js/datatables.net-responsive-bs/css/responsive.bootstrap.min.css'); ?>"
 	<link href="<?php echo assets_url('css/animate.css');?>" rel="stylesheet">
@@ -40,6 +45,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!--<script src="<?php echo assets_url('js/jquery-3.1.1.min.js');?>"></script>-->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<!-- Slick -->
+	<script src="<?php echo assets_url('js/slick/slick.min.js');?>"></script>
 	
 	<script src="<?php echo assets_url('js/bootstrap.min.js');?>"></script>
 	<script src="<?php echo assets_url('js/plugins/metisMenu/jquery.metisMenu.js');?>"></script>
@@ -437,6 +445,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 					// Aplicamos select2() a todos los combos select
 					$("select").select2();
+					$('.slick').slick({
+		                dots: true
+		            });
+
 					
 					$('.datepicker').datepicker({
 				        format: "dd-mm-yyyy",
