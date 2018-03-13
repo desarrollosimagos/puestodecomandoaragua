@@ -54,10 +54,16 @@ class CGrafico extends CI_Controller {
 	// Estadisticas de Twitter por Mencion
 	public function grafico_bandeja()
 	{
-        $response['bandeja_entrada'] = $this->grafico->bandeja_entrada();
-        $response['bandeja_politico'] = $this->grafico->bandeja_politico();
-        $response['bandeja_asistencial'] = $this->grafico->bandeja_asistencial();
-        $response['bandeja_operantes'] = $this->grafico->bandeja_operantes();
+        $response['bandeja_entrada'] = $this->grafico->grafico_bandeja('bandeja_entrada');
+        $response['bandeja_politico'] = $this->grafico->grafico_bandeja('bandeja_politico');
+        $response['bandeja_asistencial'] = $this->grafico->grafico_bandeja('bandeja_asistencial');
+        $response['bandeja_operantes'] = $this->grafico->grafico_bandeja('bandeja_operantes');
+        $response['bandeja_oponentes'] = $this->grafico->grafico_bandeja('bandeja_oponentes');
+        $response['bandeja_individuales'] = $this->grafico->grafico_bandeja('bandeja_individuales');
+        $response['bandeja_colectivos'] = $this->grafico->grafico_bandeja('bandeja_colectivos');
+        $response['bandeja_respuestas'] = $this->grafico->grafico_bandeja('bandeja_respuestas');
+        $response['bandeja_resueltos'] = $this->grafico->grafico_bandeja('bandeja_resueltos');
+        $response['bandeja_observaciones'] = $this->grafico->grafico_bandeja('bandeja_observaciones');
         echo json_encode($response);
 	}
 

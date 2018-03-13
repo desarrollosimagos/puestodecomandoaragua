@@ -109,33 +109,10 @@ class MGrafico extends CI_Model {
     }
 
     // Estadisticas de Twitter, conteo de por bandejas
-    public function bandeja_entrada()
+    public function grafico_bandeja($table)
     {
         $this->db->select("count(a.id) AS cantidad");
-        $this->db->from("bandeja_entrada as a");
-        $query = $this->db->get();
-        return $query->row();
-    }
-    public function bandeja_politico()
-    {
-        $this->db->select("count(a.id) AS cantidad");
-        $this->db->from("bandeja_politico as a");
-        $query = $this->db->get();
-        return $query->row();
-    }
-
-    public function bandeja_asistencial()
-    {
-        $this->db->select("count(a.id) AS cantidad");
-        $this->db->from("bandeja_asistencial as a");
-        $query = $this->db->get();
-        return $query->row();
-    }
-
-    public function bandeja_operantes()
-    {
-        $this->db->select("count(a.id) AS cantidad");
-        $this->db->from("bandeja_operantes as a");
+        $this->db->from("$table as a");
         $query = $this->db->get();
         return $query->row();
     }

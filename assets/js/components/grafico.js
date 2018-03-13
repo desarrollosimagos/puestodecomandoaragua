@@ -217,6 +217,12 @@ $(document).ready(function () {
         $("h1.count-bandeja-politico").text(datos.bandeja_politico.cantidad);
         $("h1.count-bandeja-asistencial").text(datos.bandeja_asistencial.cantidad);
         $("h1.count-bandeja-operantes").text(datos.bandeja_operantes.cantidad);
+        $("h1.count-bandeja-oponentes").text(datos.bandeja_oponentes.cantidad);
+        $("h1.count-bandeja-individuales").text(datos.bandeja_individuales.cantidad);
+        $("h1.count-bandeja-colectivos").text(datos.bandeja_colectivos.cantidad);
+        $("h1.count-bandeja-respuestas").text(datos.bandeja_respuestas.cantidad);
+        $("h1.count-bandeja-resueltos").text(datos.bandeja_resueltos.cantidad);
+        $("h1.count-bandeja-observaciones").text(datos.bandeja_observaciones.cantidad);
     });
 
     $.post(base_url('/mencion_etiqueta_json'), function(data, status){

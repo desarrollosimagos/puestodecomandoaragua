@@ -1,5 +1,8 @@
-<style type="text/css">
 
+<style type="text/css">
+    .white{
+        color: #FFFFFF !important;
+    }
     .ibox-title {
         -moz-border-bottom-colors: none;
         -moz-border-left-colors: none;
@@ -142,24 +145,88 @@
                         </div>
                         <div>
                         <div class="ibox-content">
-                            <h2>Slide 2</h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap.
-                            </p>
+                            <div class="col-lg-3">
+                                <div class="widget style1 bg-olive">
+                                    <div class="row white">
+                                        <div class="col-xs-4">
+                                            <i class="fa fa-twitter fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-8 text-right">
+                                            <span> Bandeja oponentes </span>
+                                            <h1 class="font-bold count-bandeja-oponentes">0</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="widget style1 bg-orange">
+                                    <div class="row white">
+                                        <div class="col-xs-4">
+                                            <i class="fa fa-twitter fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-8 text-right">
+                                            <span> Bandeja individual </span>
+                                            <h1 class="font-bold count-bandeja-individuales">0</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="widget style1 bg-red">
+                                    <div class="row white">
+                                        <div class="col-xs-4">
+                                            <i class="fa fa-twitter fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-8 text-right">
+                                            <span> Bandeja colectivos </span>
+                                            <h1 class="font-bold count-bandeja-colectivos">0</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="widget style1 bg-purple">
+                                    <div class="row white">
+                                        <div class="col-xs-4">
+                                            <i class="fa fa-twitter fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-8 text-right">
+                                            <span> Bandeja respuestas </span>
+                                            <h1 class="font-bold count-bandeja-respuestas">0</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         </div>
                         <div>
                             <div class="ibox-content">
-                                <h2>Slide 3</h2>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen
-                                    book. It has survived not only five centuries, but also the leap.
-                                </p>
+                                <div class="col-lg-3">
+                                    <div class="widget style1 bg-navy">
+                                        <div class="row white">
+                                            <div class="col-xs-4">
+                                                <i class="fa fa-twitter fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <span> Bandeja resueltos </span>
+                                                <h1 class="font-bold count-bandeja-resueltos">0</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="widget style1 bg-teal">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <i class="fa fa-twitter white fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <span class="white"> Bandeja observaciones </span>
+                                                <h1 class="white font-bold count-bandeja-observaciones">0</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

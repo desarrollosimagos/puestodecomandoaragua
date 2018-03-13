@@ -22,6 +22,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link href="<?php echo assets_url('css/slick/slick-theme.css');?>" rel="stylesheet">
 	<link href="<?php echo assets_url('css/slick/animate.css');?>" rel="stylesheet">
 
+	<!-- Basscc -->
+	<link href="<?php echo assets_url('css/basscss.min.css');?>" rel="stylesheet">
+
     <link rel="stylesheet" href="<?php echo assets_url('css/dataTables.responsive.css'); ?>">
     <link href="<?php echo assets_url('js/datatables.net-responsive-bs/css/responsive.bootstrap.min.css'); ?>"
 	<link href="<?php echo assets_url('css/animate.css');?>" rel="stylesheet">
