@@ -15,6 +15,26 @@ $(document).ready(function () {
         return url;
     };
 
+    var formatNumber = {
+         separador: ".", // separador para los miles
+         sepDecimal: ',', // separador para los decimales
+         formatear:function (num){
+         num +='';
+         var splitStr = num.split('.');
+         var splitLeft = splitStr[0];
+         var splitRight = splitStr.length > 1 ? this.sepDecimal + splitStr[1] : '';
+         var regx = /(\d+)(\d{3})/;
+         while (regx.test(splitLeft)) {
+         splitLeft = splitLeft.replace(regx, '$1' + this.separador + '$2');
+         }
+         return this.simbol + splitLeft +splitRight;
+         },
+         new:function(num, simbol){
+         this.simbol = simbol ||'';
+         return this.formatear(num);
+         }
+    }
+
     // Grafico por operador
     function grafico_operador(desde, hasta){
         $.post(base_url('/operador_json?desde='+desde+'&hasta='+hasta), function(data, status){
@@ -213,16 +233,16 @@ $(document).ready(function () {
     // Estadisticas de Twitter por Mencion al Ciudadano Gobernador
     $.post(base_url('/mencion_json'), function(data, status){
         var datos = $.parseJSON(data);
-        $("h1.count-bandeja-entrada").text(datos.bandeja_entrada.cantidad);
-        $("h1.count-bandeja-politico").text(datos.bandeja_politico.cantidad);
-        $("h1.count-bandeja-asistencial").text(datos.bandeja_asistencial.cantidad);
-        $("h1.count-bandeja-operantes").text(datos.bandeja_operantes.cantidad);
-        $("h1.count-bandeja-oponentes").text(datos.bandeja_oponentes.cantidad);
-        $("h1.count-bandeja-individuales").text(datos.bandeja_individuales.cantidad);
-        $("h1.count-bandeja-colectivos").text(datos.bandeja_colectivos.cantidad);
-        $("h1.count-bandeja-respuestas").text(datos.bandeja_respuestas.cantidad);
-        $("h1.count-bandeja-resueltos").text(datos.bandeja_resueltos.cantidad);
-        $("h1.count-bandeja-observaciones").text(datos.bandeja_observaciones.cantidad);
+        $("h1.count-bandeja-entrada").text(formatNumber.new(datos.bandeja_entrada.cantidad));
+        $("h1.count-bandeja-politico").text(formatNumber.new(datos.bandeja_politico.cantidad));
+        $("h1.count-bandeja-asistencial").text(formatNumber.new(datos.bandeja_asistencial.cantidad));
+        $("h1.count-bandeja-operantes").text(formatNumber.new(datos.bandeja_operantes.cantidad));
+        $("h1.count-bandeja-oponentes").text(formatNumber.new(datos.bandeja_oponentes.cantidad));
+        $("h1.count-bandeja-individuales").text(formatNumber.new(datos.bandeja_individuales.cantidad));
+        $("h1.count-bandeja-colectivos").text(formatNumber.new(datos.bandeja_colectivos.cantidad));
+        $("h1.count-bandeja-respuestas").text(formatNumber.new(datos.bandeja_respuestas.cantidad));
+        $("h1.count-bandeja-resueltos").text(formatNumber.new(datos.bandeja_resueltos.cantidad));
+        $("h1.count-bandeja-observaciones").text(formatNumber.new(datos.bandeja_observaciones.cantidad));
     });
 
     $.post(base_url('/mencion_etiqueta_json'), function(data, status){

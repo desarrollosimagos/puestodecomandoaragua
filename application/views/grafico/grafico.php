@@ -97,7 +97,7 @@
                                             </div>
                                             <div class="col-xs-8 text-right">
                                                 <span> Bandeja entrada </span>
-                                                <h1 class="font-bold count-bandeja-entrada">0</h1>
+                                                <h1 class="font-bold count-bandeja-entrada format-decimal">0</h1>
                                             </div>
                                         </div>
                                     </div>
