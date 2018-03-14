@@ -86,4 +86,10 @@ class CSituacion extends CI_Controller {
 		$response = $this->situacion->ajax_situacion($text);
 		echo json_encode($response, JSON_NUMERIC_CHECK);
 	}
+
+	public function change_users()
+	{
+		$datos = $this->input->post();
+        $this->situacion->change_users($datos);
+	}
 }

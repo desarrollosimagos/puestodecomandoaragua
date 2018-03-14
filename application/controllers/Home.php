@@ -14,14 +14,14 @@ Class Home extends CI_Controller {
 
 	// Show login page
     public function home() {
-		// Borrar la cache de sesión manualmente
-		//$this->session->sess_destroy();
-		$this->load->view('base');
+        $profile_id = $this->session->userdata('logged_in')['profile_id'];
 		$data['situacion'] = $this->situacion->obtener();
 		$data['profile'] = $this->perfil->obtener();
-		$this->load->view('grafico/grafico', $data);
+        $this->load->view('base');
+        if($profile_id == 1 || $profile_id == 27){
+            $this->load->view('grafico/grafico', $data);
+        }
 		$this->load->view('footer');
-		//~ $this->basicauthpublic->logout();
     }
 
     public function import_situaciones() {

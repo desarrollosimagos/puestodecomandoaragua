@@ -259,6 +259,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="modal fade" id="div_cambio_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	            <div class="modal-dialog" role="document">
 	                <div class="modal-content">
+	            		<div class="alert alert-info">Puede combinar varias palabras, con el uso de letras, mayúsculas, números y símbolos de teclado, para una mayor seguridad y protección de su cuenta se recomienda cambiar su contraseña de manera constante.</div>
 	                    <div class="modal-body">
 	                        <form method="post" enctype="multipart/form-data" id="frmpassword">
 	                            <div class="col-xs-12">
@@ -330,7 +331,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					          },
 					          function(isConfirm){
 				                if (isConfirm) {
-				                  $.post('<?php echo base_url(); ?>CUser/change_users',$("#frmpassword").serialize(), function (response) {
+				                  $.post('<?php echo base_url(); ?>CSituacion/change_users',$("#frmpassword").serialize(), function (response) {
 				                                  if (response == 1) {
 				                                      swal("Registro actualizado correctamente...");
 				                                      location.reload();
