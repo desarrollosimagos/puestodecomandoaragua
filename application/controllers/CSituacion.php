@@ -92,4 +92,15 @@ class CSituacion extends CI_Controller {
 		$datos = $this->input->post();
         $this->situacion->change_users($datos);
 	}
+
+	// Método de ingreso de hashtags
+    public function add_hashtags() {
+		
+		$data = array(
+			'name' => $this->input->post('name'),
+			'd_create' => date('Y-m-d H:i:s'),
+		);
+
+        return $this->situacion->add_hashtags($data);
+    }
 }

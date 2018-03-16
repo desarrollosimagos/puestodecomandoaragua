@@ -111,6 +111,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<ul class="dropdown-menu animated fadeInRight m-t-xs">
 								<li><a href="<?php echo base_url();?>home">Inicio</a></li>
 								<li><a class="change_users">Cambiar contraseña</a></li>
+								<?php 
+									$perfil_id = $this->session->userdata('logged_in')['profile_id'];
+									if($perfil_id == 1 || $perfil_id == 27){ ?>
+									<li><a class="new_hashtags">Nuevo Hashtags</a></li>
+									<?php }?>
 								<!--<li><a href="">Perfil</a></li>-->
 								<!--<li><a href="contacts.html">Contactos</a></li>-->
 								<li class="divider"></li>
@@ -255,7 +260,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			
 			<input type="hidden" value="<?php echo $this->session->userdata('logged_in')['group']; ?>" id="group_id">
-
+			<!-- Formulario de ingreso de cambio de cuenta de usuario -->
 			<div class="modal fade" id="div_cambio_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	            <div class="modal-dialog" role="document">
 	                <div class="modal-content">
@@ -288,12 +293,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                </div>
 	            </div>
 	        </div>
+
+	        <!-- Formulario de ingreso de nuevo hashtags -->
+	        <div class="modal fade" id="div_hashtags" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	            <div class="modal-dialog" role="document">
+	                <div class="modal-content">
+	            		<div class="alert alert-info">Ingrese el nombre del hashtags del dia, tenga en cuenta que puede cargar un maximo de 4 por dia.</div>
+	                    <div class="modal-body">
+	                        <form method="post" enctype="multipart/form-data" id="frmhashtags">
+	                            <div class="col-xs-12">
+	                                <div class="form-group col-xs-12" style="margin:auto;">
+	                                    <label>Hashtags del dia</label>
+	                                    <input type="text" id='name-hashtags' name='name' class="form-control" placeholder="Hashtags" autofocus='autofocus'/>
+	                                </div>
+	                            </div>
+	                        </form>
+	                    </div>
+	                    <br/>
+	                    <br/>
+	                    <div class="modal-footer">
+	                        <button type="button" class="btn btn-success send-hashtags">Guardar Hashtags</button>
+	                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cerrar</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
 			
 			<script>
 				$(document).ready(function () {
 
 					$("a.change_users").click(function () {
 						$('div#div_cambio_user').modal({backdrop: 'static', keyboard: false});
+					});
+
+					// Ingresar nuevo hashtags
+					$("a.new_hashtags").click(function () {
+						$('div#div_hashtags').modal({backdrop: 'static', keyboard: false});
 					});
 
 					$(".actualizar_passwd").click(function () {
@@ -337,6 +372,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				                                      location.reload();
 				                                  }else if (response == 2) {
 				                                      swal("Disculpe,", "las contraseñas anteriores no es correcta");
+				                                  }
+				                              });
+				                } else {
+				                  swal("Rectificar","Puede rectificar sus datos nuevamente!");
+				                }
+					          });
+
+		                }
+		            });
+
+		            $(".send-hashtags").click(function () {
+		                var $name = $("#name-hashtags");
+		                
+
+		                if ($name.val().trim() == "") {
+		                    swal("Disculpe,", "debe ingresar el hashtags del dia");
+		                    $name.focus();
+
+		                } else {
+		                	swal({
+					            title: "¿Está seguro de guardar el hashtags del dia?",
+					            text: "Asegurece de que este formulada correctamente",
+					            type: "warning",
+					            showCancelButton: true,
+					            confirmButtonColor: "#DD6B55",
+					            confirmButtonText: "Aceptar",
+					            cancelButtonText: "Cancelar",
+					            closeOnConfirm: false,
+					            closeOnCancel: true
+					          },
+					          function(isConfirm){
+				                if (isConfirm) {
+				                  $.post('<?php echo base_url(); ?>CSituacion/add_hashtags',$("#frmhashtags").serialize(), function (response) {
+				                                  if (response == 1) {
+				                                      swal("Disculpe","Hashtags ya se encuentra registrado...");
+				                                  }else if (response == 2) {
+				                                      swal("Registro guardado correctamente...");
+				                                      $name.val("");
+				                                  }else if (response == 3) {
+				                                      swal("Disculpe","Alcanzo el límite de hashtags por dia...");
 				                                  }
 				                              });
 				                } else {

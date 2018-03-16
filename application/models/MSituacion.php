@@ -94,5 +94,18 @@ class MSituacion extends CI_Model {
             echo 2;
         }
     }
+
+    // Método de ingreso de hashtags
+    public function add_hashtags($datos) {
+        $this->db->where('name =', $datos['name']);
+        $result = $this->db->get('hashtags');
+        if ($result->num_rows() > 0) {
+            echo 1;
+        } if ($result->num_rows() == 0) {
+            $result = $this->db->insert("hashtags", $datos);
+            $id = $this->db->insert_id();
+            echo 2;
+        }
+    }
 }
 ?>
