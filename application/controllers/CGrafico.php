@@ -74,5 +74,21 @@ class CGrafico extends CI_Controller {
         echo json_encode($response);
 	}
 
+	// Estadisticas de hashtags del dia
+	public function day_hashtags()
+	{	$hashtags = $this->grafico->get_hashtags();
+		foreach ($hashtags as $key => $value) {
+			$data = $this->grafico->day_hashtags($value->name);
+				$output = array(
+				"draw" => intval($this->input->post('draw')),
+				"recordsTotal" => $this->grafico->get_all_data(),
+				"recordsFiltered" => $this->grafico->get_filtered_data(),
+				"data" => $data
+			);
+	        echo json_encode($output);
+		}
+        
+	}
+
 
 }

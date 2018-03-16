@@ -20,7 +20,7 @@ class Migration_create_table_hashtags extends CI_Migration
 					"constraint" => 15
 				),
 				"d_create" => array(
-					"type" => "TIMESTAMP",
+					"type" => "DATE",
 					"null" => TRUE
 				),
 			)

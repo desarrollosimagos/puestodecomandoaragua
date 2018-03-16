@@ -5,9 +5,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MGrafico extends CI_Model {
 
-
+    var $select_column = array(
+            "b_e.id", 
+            "b_e.text"
+    );
+    
+    var $order_column = array(
+        "b_e.id",
+        "b_e.text"
+    );
     public function __construct() {
-       
         parent::__construct();
         $this->load->database();
     }
@@ -125,6 +132,54 @@ class MGrafico extends CI_Model {
         $this->db->like('a.text', '#');
         $query = $this->db->get();
         return $query->result();
+    }
+
+    // Get all hashtags
+    public function get_hashtags() {
+        $this->db->where('d_create', date('Y-m-d'));
+        $query = $this->db->get('hashtags');
+        return $query->result();
+    }
+
+    // Estadisticas de hashtags del dia
+    public function day_hashtags($hashtags)
+    {   
+        $this->db->select("a.id,a.text AS name");
+        $this->db->from("bandeja_entrada as a");
+        $this->db->like('a.text', $hashtags);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // Método público para obtener el número total de registros de la bandeja de entrada en estatus 1
+    public function get_all_data(){
+        $this->db->select($this->select_column);
+        $this->db->from("bandeja_entrada");
+        return $this->db->count_all_results();
+    }
+
+    // Método público para construir la consulta
+    public function make_query() {
+        $this->db->select($this->select_column);
+        //~ $this->db->distinct();
+        $this->db->from("bandeja_entrada AS b_e");
+        if(isset($_POST["search"]["value"]) && $_POST["search"]["value"] != ""){
+            //$condicionales_like = "b_e.text LIKE '%".$_POST["search"]["value"]."%'";
+            //$this->db->where($condicionales_like);
+            $this->db->like('b_e.text', $_POST["search"]["value"]);
+        }
+        if(isset($_POST["order"])){
+            $this->db->order_by($this->order_column[$_POST["order"]["0"]["column"]], $_POST["order"]["0"]["dir"]);
+        }else{
+            $this->db->order_by("id", "DESC");
+        }
+    }
+
+    // Método público para obtener el número de registros resultantes de make_query()
+    public function get_filtered_data(){
+        $this->make_query();
+        $query = $this->db->get();
+        return $query->num_rows();
     }
 
 }

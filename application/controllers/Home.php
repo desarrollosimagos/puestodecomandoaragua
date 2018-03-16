@@ -9,6 +9,7 @@ Class Home extends CI_Controller {
         // Load Model
         $this->load->model('MSituacion','situacion');
         $this->load->model('MPerfil','perfil');
+        $this->load->model('MGrafico','grafico');
         $this->import_situaciones();
     }
 
@@ -17,6 +18,7 @@ Class Home extends CI_Controller {
         $profile_id = $this->session->userdata('logged_in')['profile_id'];
 		$data['situacion'] = $this->situacion->obtener();
 		$data['profile'] = $this->perfil->obtener();
+        $data['hashtags'] = $this->grafico->get_hashtags();
         $this->load->view('base');
         if($profile_id == 1 || $profile_id == 27){
             $this->load->view('grafico/grafico', $data);

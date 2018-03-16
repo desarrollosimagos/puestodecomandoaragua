@@ -189,6 +189,7 @@ $route['institucion_json'] = 'CGrafico/grafico_institucion';
 $route['institucion_situacion_json'] = 'CGrafico/grafico_institucion_situacion';
 $route['mencion_json'] = 'CGrafico/grafico_bandeja';
 $route['mencion_etiqueta_json'] = 'CGrafico/grafico_mencion_etiqueta';
+$route['hashtags_json'] = 'CGrafico/day_hashtags';
 
 
 /*   Migraciones */

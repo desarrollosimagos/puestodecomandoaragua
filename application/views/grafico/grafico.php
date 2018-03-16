@@ -66,7 +66,8 @@
     }
 </style>
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
+    <div class="col-lg-12">
+        <div class="col-lg-8">
         <h2>Observación</h2>
         <ol class="breadcrumb">
             <li>
@@ -76,7 +77,26 @@
                 <strong>Observación</strong>
             </li>
         </ol>
-       
+       </div>
+       <div class="col-lg-4">
+           <div class="col-lg-12">
+                <div class="widget style1 bg-olive">
+                    <div class="row white">
+                        <div class="col-xs-4">
+                            <i class="fa fa-hashtag fa-5x"></i>
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <h3> Hashtags del dia </h3>
+                            <ul>
+                                <?php foreach ($hashtags as $key => $value) {?>
+                                <li><?php echo $value->name;?></li>
+                                <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
     </div>
     <div class="col-lg-2">
 

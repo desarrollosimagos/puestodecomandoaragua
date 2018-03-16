@@ -101,7 +101,7 @@ class MSituacion extends CI_Model {
         $result = $this->db->get('hashtags');
         if ($result->num_rows() > 0) {
             echo 1;
-        } if ($result->num_rows() == 0) {
+        } else if ($result->num_rows() == 0) {
             $result = $this->db->insert("hashtags", $datos);
             $id = $this->db->insert_id();
             echo 2;

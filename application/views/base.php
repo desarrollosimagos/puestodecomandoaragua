@@ -410,6 +410,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				                                  }else if (response == 2) {
 				                                      swal("Registro guardado correctamente...");
 				                                      $name.val("");
+				                                      location.reload();
 				                                  }else if (response == 3) {
 				                                      swal("Disculpe","Alcanzo el límite de hashtags por dia...");
 				                                  }
