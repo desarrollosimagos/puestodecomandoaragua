@@ -66,8 +66,7 @@
     }
 </style>
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-12">
-        <div class="col-lg-8">
+    <div class="col-lg-10">
         <h2>Observación</h2>
         <ol class="breadcrumb">
             <li>
@@ -77,26 +76,7 @@
                 <strong>Observación</strong>
             </li>
         </ol>
-       </div>
-       <div class="col-lg-4">
-           <div class="col-lg-12">
-                <div class="widget style1 bg-olive">
-                    <div class="row white">
-                        <div class="col-xs-4">
-                            <i class="fa fa-hashtag fa-5x"></i>
-                        </div>
-                        <div class="col-xs-8 text-right">
-                            <h3> Hashtags del dia </h3>
-                            <ul>
-                                <?php foreach ($hashtags as $key => $value) {?>
-                                <li><?php echo $value->name;?></li>
-                                <?php }?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       </div>
+       
     </div>
     <div class="col-lg-2">
 
@@ -252,48 +232,44 @@
                     </div>
                 </div>
             </div>
-                    <!--<div class="col-lg-3">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                
-                                <h5>Etiquetas del Dia</h5>
-                            </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins count-menciones-etiqueta">0</h1>
-                                
-                                <small>Total etiquetas</small>
-                            </div>
-                        </div>
-                    </div>-->
-                    <!--<div class="col-lg-3">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <span class="label label-primary pull-right">Today</span>
-                                <h5>visits</h5>
-                            </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins">106,120</h1>
-                                <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
-                                <small>New visits</small>
-                            </div>
-                        </div>
-                    </div>-->
-                    <!--<div class="col-lg-3">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <span class="label label-danger pull-right">Low value</span>
-                                <h5>User activity</h5>
-                            </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins">80,600</h1>
-                                <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
-                                <small>In first month</small>
-                            </div>
-                        </div>
-                    </div>-->
         </div>
         <div class="row">
                     <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Historial de Hashtags por dia</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="widget style1 bg-orange">
+                                            <div class="row white">
+                                                <div class="col-xs-12 text-right">
+                                                    <h3> Hashtags </h3>
+                                                    <ul>
+                                                        <?php $item = 1; foreach ($hashtags as $key => $value) {
+                                                        $day_hashtags = $this->grafico->day_hashtags($value->name);
+                                                        ?>
+                                                        <li>
+                                                            <?php echo $value->name." (".count($day_hashtags).")";?>
+                                                        </li>
+                                                    <?php }?>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8" style="height: 345px !important;">
+                                        <object type="application/php" data='<?php echo base_url("/pdf_hashtags");?>'  style="width:100%; height:350px;">
+                                          <embed src='<?php echo base_url("/pdf_hashtags");?>'  style="width:100%; height:600px;" frameborder="0" style="border:0;">
+                                        </object>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <h5>Operadores</h5>
@@ -475,9 +451,16 @@
                                 </div>
                             </div>
                         </div>
-                </div>
+        </div>
 </div>
 
 
  <!-- Page-Level Scripts -->
 <script src="<?php echo assets_url('js/components/grafico.js');?>"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        setInterval(function() {
+          window.location.reload();
+        }, 300000);
+    });
+</script>

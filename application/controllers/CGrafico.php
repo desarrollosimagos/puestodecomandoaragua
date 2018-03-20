@@ -90,5 +90,19 @@ class CGrafico extends CI_Controller {
         
 	}
 
+	public function pdf_hashtags()
+	  {
+	  	$this->load->library('rpdf');
+	  	date_default_timezone_set("America/Caracas");
+	  	$mpdf = $this->rpdf->load('utf-8', 'A4-V');
+        $mpdf->SetHTMLHeader($html_header);
+        $mpdf->SetHTMLFooter($html_footer);
+        $mpdf->AddPage('L');
+        $hashtags = $this->grafico->get_hashtags();
+        $html = $this->load->view('grafico/pdf_hashtags', compact('hashtags'), true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output("Historial.pdf", 'I');
+	  }
+
 
 }
