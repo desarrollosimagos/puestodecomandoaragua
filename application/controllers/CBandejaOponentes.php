@@ -17,7 +17,7 @@ class CBandejaOponentes extends CI_Controller {
 		$this->load->view('base');
 		$data['situacion'] = $this->situacion->obtener();
 		$this->load->view('bandejas/bandeja_oponente', $data);
-		$this->load->view('footer');
+		//$this->load->view('footer');
 	}
 	
 	public function ajax_oponentes(){

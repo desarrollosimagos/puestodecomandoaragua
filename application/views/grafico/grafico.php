@@ -251,7 +251,7 @@
                                                         $day_hashtags = $this->grafico->day_hashtags($value->name);
                                                         ?>
                                                         <li>
-                                                            <?php echo $value->name." (".count($day_hashtags).")";?>
+                                                            <?php echo "#".$value->name." (".count($day_hashtags).")";?>
                                                         </li>
                                                     <?php }?>
                                                     </ul>
@@ -272,7 +272,7 @@
                         <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Operadores</h5>
+                                <h5>Cuadro estadístico por Operadores</h5>
                                 <!--<div class="pull-right">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-xs btn-white active">Today</button>
@@ -323,7 +323,7 @@
                         <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
-                                        <h5>Instituciones</h5>
+                                        <h5>Cuadro estadístico por Instituciones</h5>
                                         <!--<div class="pull-right">
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-xs btn-white active">Today</button>
@@ -373,7 +373,7 @@
                         <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
-                                        <h5>Instituciones / Situaciones</h5>
+                                        <h5>Cuadro estadístico por Instituciones / Situaciones</h5>
                                         <!--<div class="pull-right">
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-xs btn-white active">Today</button>

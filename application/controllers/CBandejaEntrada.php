@@ -33,7 +33,7 @@ class CBandejaEntrada extends CI_Controller {
 		$data['situacion'] = $this->situacion->obtener();
 		$this->load->view('base');
 		$this->load->view('bandejas/bandeja_entrada', $data);
-		$this->load->view('footer');
+		//$this->load->view('footer');
 	}
 	
 	public function ajax_entrada(){

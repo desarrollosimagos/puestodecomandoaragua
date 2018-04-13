@@ -44,6 +44,12 @@
         </div>
     </div>
 </div>
+<div class="footer">
+    <div class="pull-right">
+    <!-- 10GB of <strong>250GB</strong> Free.-->
+    </div>
+    <div><strong></strong> Puesto Comando Aragua &copy; 2017</div>
+</div>
 
 <!-- Modal para descripción del movimiento -->
 <div class="modal fade" id="modal_detalles">

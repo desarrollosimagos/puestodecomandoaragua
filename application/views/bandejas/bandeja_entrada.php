@@ -46,6 +46,11 @@
         </div>
     </div>
 </div>
+<div class="footer">
+	<div class="pull-right">
+	</div>
+	<div><strong></strong> Puesto Comando Aragua &copy; 2017</div>
+</div>
 
 <!-- Modal para descripción del movimiento -->
 

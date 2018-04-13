@@ -15,7 +15,7 @@ class CBandejaResueltos extends CI_Controller {
 	public function index(){
 		$this->load->view('base');
 		$this->load->view('bandejas/bandeja_resueltos');
-		$this->load->view('footer');
+		//$this->load->view('footer');
 	}
 	
 	public function ajax_resueltos(){

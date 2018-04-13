@@ -20,7 +20,7 @@ class CBandejaObservaciones extends CI_Controller {
 		$this->load->view('base');
 		$data['situacion'] = $this->situacion->obtener();
 		$this->load->view('bandejas/bandeja_observaciones',$data);
-		$this->load->view('footer');
+		//$this->load->view('footer');
 		
 	}
 	
